@@ -1,0 +1,6 @@
+<div class="menu">
+  <p class="menu-label"> All your characters</p>
+  <ul  *ngFor="let char of players" class="menu-list">
+    <a href="/player/{{char._id}}"><li> {{char.name}} </li> </a>
+  </ul>
+</div>

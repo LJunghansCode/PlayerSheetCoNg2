@@ -1,0 +1,23 @@
+
+<form id="registerForm" [formGroup]="registerForm" (ngSubmit)="doCreate($event);">
+      <h5 >{{formMessage}}</h5>
+       <section class="form-group">
+        <label for="Email">Email:</label>
+        <input type="email" class="input" formControlName="email" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+       </section>
+      <section class="form-group">
+        <label for="User Name">User Name:</label>
+        <input type="text" class="input" formControlName="userName" aria-describedby="emailHelp" placeholder="Enter Username">
+       </section>
+       <section class="form-group">
+        <label for="Password">Password:</label>
+        <input type="password" class="input" formControlName="password" aria-describedby="emailHelp" placeholder="Enter Password">
+       </section>
+       <section class="form-group">
+        <label for="Confirm Password">Confirm Password:</label>
+        <input type="password" class=" input" formControlName="confirmPassword" aria-describedby="emailHelp" placeholder="Confirm Password">
+       </section>
+    <button type="submit" class="button">Register</button>
+</form>
+ 

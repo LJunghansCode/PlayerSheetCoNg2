@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+@import './../node_modules/bulma/sass/utilities/initial-variables.sass';
+@import './../node_modules/font-awesome/css/font-awesome.min.css';
+.loader-overlay
+    border: 16px solid #f3f3f3
+    border-top: 16px solid black
+    border-radius: 50%
+    width: 120px
+    height: 120px
+    animation: spin 1.2s linear infinite
+    position: relative
+    margin: 0 auto
+    margin-top: 25%
+@keyframes spin 
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+
+@import './../node_modules/bulma/bulma.sass'

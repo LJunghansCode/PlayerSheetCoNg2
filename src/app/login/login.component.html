@@ -1,0 +1,9 @@
+
+<form id="loginForm" [formGroup]="loginForm" (ngSubmit)="loginUser($event);">
+      <h5 class="formMessage">{{formMessage}}</h5>
+        <label for="Email">Email:</label>
+        <input type="email" class=" input" formControlName="email" aria-describedby="emailHelp" placeholder="Enter email">
+        <label for="Password">Password:</label>
+        <input type="password" class=" input" formControlName="password" aria-describedby="emailHelp" placeholder="Enter Password">
+    <button type="submit" class="button" >Login</button>
+</form>
