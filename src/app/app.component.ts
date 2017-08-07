@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -11,24 +13,24 @@ export class AppComponent implements OnInit {
   navStatus = '';
   bodyStatus = '';
   loggedIn = false;
-  constructor(private loginService: LoginService) { }
+  currentLocation: string;
+
+  constructor(private loginService: LoginService, private location: Location) { }
   ngOnInit() {
+    // Initial css transition prevention wipe
+    setTimeout(function(){
+    document.body.className = '';
+    }, 1000);
     this.loginService._currentUser
     .subscribe((user) => {
       if (user !== undefined) {
         this.loggedIn = true;
       }
     });
+
+    this.currentLocation = this.location.path();
   }
 
-  openNav() {
-    this.navStatus = 'is-open';
-    this.bodyStatus = 'nav-open';
-  }
-  closeNav() {
-    this.bodyStatus = '';
-    this.navStatus = '';
-  }
   logOut() {
     this.loginService.logOutCurrent();
   }

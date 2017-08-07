@@ -18,7 +18,7 @@ export class LoginService {
   public loginUrl = 'api/login_user';
   public logInCheckUrl = 'api/get_user';
   public logOutUrl = 'api/logout';
-
+  // Current User Truth
   private currentUserSource = new BehaviorSubject(undefined);
   public _currentUser: Observable<any> = this.currentUserSource.asObservable();
 

@@ -1,4 +1,5 @@
-<div >
-  {{player}}
-  hey
+<div *ngIf='player'>
+  <input type="" [(ngModel)]='player.name'>
+  {{player.name}}
+  <button (click)="update()">Update And Save</button>
 </div>

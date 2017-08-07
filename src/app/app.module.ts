@@ -18,6 +18,9 @@ import { PlayerListComponent } from './player-dashboard/player-list/player-list.
 import { PlayerSpellsComponent } from './playersheet/player-spells/player-spells.component';
 import { PlayerDetailsComponent } from './playersheet/player-details/player-details.component';
 import { PlayerInfoComponent } from './playersheet/player-info/player-info.component';
+import { CreateComponent } from './create/create.component';
+import { InfoColumnsComponent } from './home/info-columns/info-columns.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -29,6 +32,7 @@ const routes: Routes = [
         {path: 'spells', component: PlayerSpellsComponent },
         {path: 'details', component: PlayerDetailsComponent },
       ] },
+  { path: 'create', component: CreateComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: '**', component: PagenotfoundComponent }
 ];
@@ -45,7 +49,10 @@ const routes: Routes = [
     PlayerListComponent,
     PlayerSpellsComponent,
     PlayerDetailsComponent,
-    PlayerInfoComponent
+    PlayerInfoComponent,
+    CreateComponent,
+    InfoColumnsComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

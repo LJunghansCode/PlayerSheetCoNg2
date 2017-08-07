@@ -52,7 +52,7 @@ module.exports = (() => {
             }); 
         };
         PlayerController.updateAndSave = (req, res) => {
-                Player.findOneAndUpdate({_id: req.body.id}, req.body, (err, foundPlayer) => {
+                Player.findOneAndUpdate({_id: req.body.player.id}, req.body.player, (err, foundPlayer) => {
                 if (err) {
                     return handleError(err, res);
                 }
@@ -60,7 +60,7 @@ module.exports = (() => {
                    foundPlayer.save();
                    res.json({data: foundPlayer});
                 } else {
-                    console.error('no find');
+                    res.status(404).send('player not found');
                 }
             });   
         };

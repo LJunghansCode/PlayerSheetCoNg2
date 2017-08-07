@@ -1,46 +1,7 @@
 <!--Main Partial Swap and Nav-->
-<main class="columns">
-  <section class="column is-1">
-    <span class="main-menu-button" (click)="openNav()" ><i class="fa fa-bars fa-5x"></i></span>
+<app-navbar></app-navbar>
+  <section id="body-container">
+    <router-outlet ></router-outlet>
   </section>
-  <section (click)="closeNav()" id="body-container" class="column" [ngClass]="bodyStatus">
-    <router-outlet></router-outlet>
-  </section>
-</main>
 
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <p>
-        <strong>Player Manager Co.</strong>
-        <strong>Check it out</strong>
-      </p>
-      <p>
-        <a class="is-black" href="https://github.com/LJunghansCode/LocalCharManage">
-          <i class="icon"><span class="fa fa-github"></span>
-              <span>
-      GitHub
-    </span></i>
-        </a>
-      </p>
-    </div>
-  </div>
-</footer>
-<!-- Nav Bar-->
-<aside id="mainNav" class="main-side-nav" [ngClass]="navStatus">
-    <span (click)="closeNav()"><i class="fa fa-delete"></i></span>
-    <ul class="menu-list nav-menu menu">
-      <li><a href="/home">Home</a></li>
-      <li><a href="/player-dashboard">Player Manager</a></li>
-      <li><a *ngIf="loggedIn" (click)="logOut()" href="/home">Log Out</a></li>
-      <li><a *ngIf="!loggedIn"href="/home">Log in / Register</a></li>
-      <!--Commenting this out until the campaign manager is complete-->
-      <!--<li><a href="/#!/campaignManager">Campaign Manager</a></li>-->
-    </ul>
-    <div class="github-link">
-      <a target="_blank" href="https://github.com/LJunghansCode/LocalCharManage">
-                <span class="icon">
-                    <i class="fa fa-github"></i>
-                </span>
-        </a>
-<aside>
+

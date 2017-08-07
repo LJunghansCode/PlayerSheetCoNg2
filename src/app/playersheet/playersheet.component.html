@@ -1,31 +1,33 @@
+<main id="player-dashboard">
 
-<div *ngIf="!player">
-  <h1>Looking for player...</h1>
-</div>
-<div *ngIf="player"class="hero is-light">
-        <section class="hero-body">
-            <div class="level">
-                <div class="level-left">
-                        <h1 class="playerName title">{{player.name}} the level {{player.level}} {{player.classType}}</h1>
-                </div>
-                <div class="level-right playerButtons">
-                    <button class="button is-small"
-                    type="submit">Save</button>
-                    <button class="button is-small">Toggle Edit</button>
-                    <button class="button is-small joinCButton">Join a campaign!</button>
-        
-                </div>
-            </div>
-
-        </section>
+    <div *ngIf="!player">
+        <h1>Looking for player...</h1>
     </div>
+    <div *ngIf="player"class="hero is-light">
+            <section class="hero-body">
+                <div class="level">
+                    <div class="level-left">
+                            <h1 class="playerName title">{{player.name}} the level {{player.level}} {{player.classType}}</h1>
+                    </div>
+                    <div class="level-right playerButtons">
+                        <button class="button is-small"
+                        type="submit">Save</button>
+                        <button class="button is-small">Toggle Edit</button>
+                        <button class="button is-small joinCButton">Join a campaign!</button>
+            
+                    </div>
+                </div>
 
-<div class="tabs is-centered">
-    <ul>
-        <li> <a [routerLink]="['spells']">Spells</a> </li>
-        <li> <a [routerLink]="['details']">Details</a> </li>
-        <li> <a [routerLink]="['info']">Info</a> </li>
-        
-    </ul>
-</div>
-<router-outlet ></router-outlet>
+            </section>
+    </div>
+        <router-outlet ></router-outlet>
+
+    <!-- Nav Bar-->
+    <aside class="player-side-nav">
+        <ul>
+            <li> <a class="nav-item" [routerLink]="['spells']">Spells</a> </li>
+            <li> <a class="nav-item" [routerLink]="['details']">Details</a> </li>
+            <li> <a class="nav-item" [routerLink]="['info']">Info</a> </li>
+        </ul>
+    </aside>
+</main>

@@ -65,7 +65,7 @@ export class Player {
      wisdomMod: number;
      intelligenceMod: number;
      // tslint:disable-next-line:max-line-length
-     constructor(id, accountEmail, campaign, realName, name, race, classType, alignment, sex, size, age, height, weight, level, initiative, speed, strength, dexterity, constitution, intelligence, wisdom, charisma, currentHitPoints, tempHitPoints, spellList, skills, personalityTraits, ideals, bonds, flaws, attacksSpellcasting, featuresTraits, equipment, proficiencies, languages, appearance, alliesOrganizations, backStory, treasureInventory, spellcastingClass, spellcastingAbility, spellSaveDC, spellSaveBonus, armorClass, proficiencyBonus, borderColor, companions, notes, experience) {
+     constructor(id, accountEmail, campaign, realName, name, race, classType, alignment, sex, size, age, height, weight, level, initiative, speed, strength, dexterity, constitution, intelligence, wisdom, charisma, currentHitPoints, tempHitPoints, spellList, experience, skills, personalityTraits, ideals, bonds, flaws, attacksSpellcasting, featuresTraits, equipment, proficiencies, languages, appearance, alliesOrganizations, backStory, treasureInventory, spellcastingClass, spellcastingAbility, spellSaveDC, spellSaveBonus, armorClass, proficiencyBonus, borderColor, companions, notes) {
             this.id = id;
             this.accountEmail = accountEmail;
             this.campaign = campaign;

@@ -28,7 +28,7 @@ const express = require('express'),
     routes.post('/get_player', (req, res) => {
         playerController.getPlayer(req, res);
     });
-    routes.post('/updateAndSave', (req, res) => {
+    routes.post('/update_player', (req, res) => {
         playerController.updateAndSave(req, res);
     });
     routes.post('/delete_player', (req, res) => {

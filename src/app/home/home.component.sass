@@ -1,0 +1,53 @@
+.mainTitle
+ padding: 3%
+ color: white 
+ font-size: 35pt
+.homeContainer
+ background: black
+.welcomeTitle
+ padding: 3%
+ font-size: 50pt
+ color: white
+.subTitle
+ padding: 3%
+ color: white
+ font-size: 25pt
+.createButtonContainer
+ background-color: #e7e8de
+.createButton
+ font-size: 50pt
+ border-radius: 100px
+ text-align: center
+ border: none
+ background-color: #769283
+ transition: all 0.5s
+ cursor: pointer
+ opacity: .9
+.createButton
+ &:hover
+  opacity: 1
+  .btnText
+   margin-right: 15px
+  .btnIcon
+   animation-duration: 0.6s
+   animation-name: spin
+.btnIcon
+ animation-name: backspin
+ animation-duration: 0.6s
+ transition: all 0.6s
+ font-size: 40pt
+ margin-top: 9px
+ margin-left: 15px 
+.btnText
+ transition: all 0.6s
+
+ @keyframes backspin
+  100%
+    transform: rotate(0deg)
+  0%
+    transform: rotate(360deg)
+ @keyframes spin
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)

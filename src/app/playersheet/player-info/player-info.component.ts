@@ -14,9 +14,17 @@ export class PlayerInfoComponent implements OnInit {
   ngOnInit() {
     this.playerService._playerSingle
       .subscribe(player => {
-        console.log(player)
-        this.player = player;
+          this.player = player;
+      }, (error) => {
+        console.error(error);
+      },
+      () => {
+        // got player
       });
+  }
+  update() {
+    console.log(this.player)
+    this.playerService.updateCurrentPlayer(this.player);
   }
 
 }
