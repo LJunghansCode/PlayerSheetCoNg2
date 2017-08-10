@@ -48,6 +48,7 @@ proficiencyBonus: {type: Number},
 borderColor: {type: String},
 companions:{type: []},
 notes: {type: []},
-experience: {type: Number}
+experience: {type: Number},
+portraitUrl: {type: String}
 });
 mongoose.model('player', playerSchema);

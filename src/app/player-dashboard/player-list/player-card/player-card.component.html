@@ -1,0 +1,28 @@
+
+<article class="media char">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img src="./../../../assets/temp.jpg">
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong>{{player.name}}</strong> <small>{{player.classType}}</small> <small>{{player.level}}</small>
+      </p>
+    </div>
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <a class="level-item" href="./player/{{player._id}}">
+          <span class="icon is-small"><i class="fa fa-edit"></i></span>
+        </a>
+        <a class="level-item">
+          <span class="icon is-small"><i class="fa fa-save"></i></span>
+        </a>
+        <a class="level-item">
+          <span class="icon is-small"><i class="fa fa-trash"></i></span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</article>

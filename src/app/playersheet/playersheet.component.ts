@@ -29,6 +29,8 @@ export class PlayersheetComponent implements OnInit {
       .subscribe((player) => {
         if (!this.player && player) {
             this.player = player;
+            this.player.masterStats = this.player.organizeStatsArray();
+            console.log(this.player.masterStats)
         }
       }, (error) => {
         console.error(error);

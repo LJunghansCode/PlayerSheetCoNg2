@@ -64,8 +64,10 @@ export class Player {
      constitutionMod: number;
      wisdomMod: number;
      intelligenceMod: number;
+     portraitUrl: string;
+     masterStats: any;
      // tslint:disable-next-line:max-line-length
-     constructor(id, accountEmail, campaign, realName, name, race, classType, alignment, sex, size, age, height, weight, level, initiative, speed, strength, dexterity, constitution, intelligence, wisdom, charisma, currentHitPoints, tempHitPoints, spellList, experience, skills, personalityTraits, ideals, bonds, flaws, attacksSpellcasting, featuresTraits, equipment, proficiencies, languages, appearance, alliesOrganizations, backStory, treasureInventory, spellcastingClass, spellcastingAbility, spellSaveDC, spellSaveBonus, armorClass, proficiencyBonus, borderColor, companions, notes) {
+     constructor(id, accountEmail, campaign, realName, name, race, classType, alignment, sex, size, age, height, weight, level, initiative, speed, strength, dexterity, constitution, intelligence, wisdom, charisma, currentHitPoints, tempHitPoints, spellList, experience, skills, personalityTraits, ideals, bonds, flaws, attacksSpellcasting, featuresTraits, equipment, proficiencies, languages, appearance, alliesOrganizations, backStory, treasureInventory, spellcastingClass, spellcastingAbility, spellSaveDC, spellSaveBonus, armorClass, proficiencyBonus, borderColor, companions, notes, portraitUrl) {
             this.id = id;
             this.accountEmail = accountEmail;
             this.campaign = campaign;
@@ -116,6 +118,7 @@ export class Player {
             this.companions = companions;
             this.notes = notes;
             this.spellSlots = new SpellSlots(this.classType);
+            this.portraitUrl = portraitUrl;
      }
       normalizeTextLowerCase(text) {
             let lowerCase = '';

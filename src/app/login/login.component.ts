@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from './../login.service';
+import { UiGlobalService } from './../ui-global.service';
 import { RouterModule, Routes, Router } from '@angular/router';
 
 @Component({
@@ -10,11 +11,13 @@ import { RouterModule, Routes, Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   formMessage: string;
+
+
   public loginForm = this.fb.group({
     email: ['', Validators.required],
     password: ['', Validators.required]
   });
-  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) { }
+  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router, private uiService: UiGlobalService) { }
 
   ngOnInit() {
   }
@@ -30,15 +33,17 @@ export class LoginComponent implements OnInit {
         (user) => {
           if (user) {
             this.formMessage = 'Thanks, you logged in!';
+            this.uiService.toggleModalLog();
             this.router.navigateByUrl('/player-dashboard');
+            window.location.reload();
           }
         },
         (error) => {
           this.formMessage = 'Something went wrong, please try again!';
-        },
-        () => {
-          // User is loaded, trigger any UI events
         });
     }
+  }
+  toggleField(field) {
+    console.log(field);
   }
 }

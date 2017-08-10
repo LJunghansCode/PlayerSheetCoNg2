@@ -1,15 +1,19 @@
-<main class="homeContainer section has-text-centered">
-    <p class="mainTitle">  Managing your alter ego can be hard,</p>
+<main class="homeContainer hero has-text-centered">
+  <div class="her-body">
     <p class="welcomeTitle">Welcome to Player Sheet Co.</p>
-    <p class="subTitle">A simple solution to keeping track of your characters</p>
+    <p class="mainTitle">  Managing your alter egos can be hard...</p>
+    <p class="subTitle">Introducing a simple solution for keeping track of your characters.</p>
+  </div>
 </main>
+
+<app-info-columns></app-info-columns>
+  
 <section class="hero createButtonContainer">
   <div class="hero-body">
-    <div class="container has-text-centered">
-          <a href="/create"><button class="button createButton"><p class="btnText">Create a Character</p><span class=" btnIcon icon is-large">
+    <div class="has-text-centered">
+         <button class="button createButton" (click)="toggleModal()"><p class="btnText">Register Now!</p><span class=" btnIcon icon is-large">
              <i class="fa fa-angle-double-right"></i>
-        </span></button></a>
+        </span></button>
     </div>
   </div>
 </section>
-<app-info-columns></app-info-columns>

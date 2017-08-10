@@ -22,6 +22,10 @@ export class LoginService {
   private currentUserSource = new BehaviorSubject(undefined);
   public _currentUser: Observable<any> = this.currentUserSource.asObservable();
 
+  public updateUser(user) {
+    this.currentUserSource.next(user);
+  }
+
   constructor(private http: Http) { }
   logOutCurrent() {
     this.http.get(this.logOutUrl, this.options).subscribe();
@@ -30,20 +34,27 @@ export class LoginService {
   newUser(userForm: FormData): Observable<User> {
     return this.http.post(this.newUserUrl, { userForm }, this.options)
       .map(this.processData)
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+      .catch((error: any) => Observable.throw(error.json() || 'Server error'));
   }
   loginUser(loginForm: FormData): Observable<User> {
     return this.http.post(this.loginUrl, { loginForm }, this.options)
       .map(this.processData)
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+      .catch((error: any) => Observable.throw(error.json() || 'Server error'));
+  }
+  loginByCredentials(email: string, password: string): Observable<User> {
+    return this.http.post(this.loginUrl, { email: email, password: password}, this.options)
+      .map(this.processData)
+      .catch((error: any) => Observable.throw(error.json() || 'Server error'));
   }
   loggedInCheck() {
     this.http.get(this.logInCheckUrl, this.options)
       .map(this.processData)
       .subscribe((user) => {
-        this.currentUserSource.next(user);
+        if (user) {
+          this.currentUserSource.next(user);
+        }
       }, (error) => {
-        this.currentUserSource.unsubscribe()
+        console.error(error.Message)
       });
   }
   private processData(res: Response) {

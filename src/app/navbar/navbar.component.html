@@ -1,24 +1,35 @@
-<nav class="navbar ">
+<nav class="navbar is-transparent">
   <div class="navbar-brand">
-    <a class="navbar-item" href="http://playersheet.co">
-      <img src="./../../assets/swordsVG.svg" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
-      <img src="./../../assets/PlayerSheetCo1.svg" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+    <a class="navbar-item" href="/home">
+      <img src="./../../assets/swordsVG.svg"  width="112" height="28">
+      <img src="./../../assets/PlayerSheetCo1.svg"  width="112" height="28">
     </a>
-    <a class="navbar-item is-hidden-desktop" href="https://github.com/LJunghansCode/PlayerSheetCoNg2" target="_blank">
-      <span class="icon" style="color: #333;">
-        <i class="fa fa-github"></i>
-      </span>
-    </a>
-    <div class="navbar-burger burger" data-target="navMenuExample">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <a class=navbar-item href="/">Log In </a>
-    <div class="navbar-end">
-      <a class="navbar-item is-hidden-desktop-only" href="https://github.com/LJunghansCode/PlayerSheetCoNg2" target="_blank">
-        Github
+  </div>   
+    <div class="nav-right">
+      <!-- NO PLAYER-->
+      <a class="navbar-item" *ngIf="!ifPlayer()" (click)="toggleModalLog()"><span class="icon is-medium"><i class="fa fa-sign-in"></i></span>Log In </a>
+      <!-- PLAYER LOGGED IN-->
+
+       <p class="navbar-item" *ngIf="ifPlayer()"><span class="icon is-medium"><i class="fa fa-hand-spock-o"></i></span>Welcome Back, {{userDetails.userName}}</p>
+       <a class="navbar-item" *ngIf="ifPlayer()" href="/player-dashboard"><span class="icon is-medium"><i class="fa fa-users"></i></span>Dashboard</a>
+       <a class="navbar-item" *ngIf="ifPlayer()" (click)="logOutCurrent()"><span class="icon is-medium"><i class="fa fa-sign-out"></i></span>Log Out</a>
+       <!-- ALWAYS -->
+      <a class="navbar-item" href="/contact"><span class="icon is-medium"><i class="fa fa-question"></i></span>About Us</a>
+      <a class="navbar-item" href="https://github.com/LJunghansCode/PlayerSheetCoNg2" target="_blank">
+      <span class="icon is-medium"><i class="fa fa-github-square"></i></span> Github
       </a>
     </div>
-  </div>
 </nav>
+
+<div class="modal" [ngClass]="ifActiveLog()">
+  <div class="modal-background" (click)="toggleModalLog()"></div>
+    <app-login></app-login>
+  <button class="modal-close is-large" (click)="toggleModalLog()"></button>
+</div>
+
+
+<div class="modal" [ngClass]="checkRegStats()">
+  <div class="modal-background" (click)="toggleModal()"></div>
+    <app-register></app-register>
+  <button class="modal-close is-large" (click)="toggleModal()"></button>
+</div>

@@ -3,9 +3,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize'
+
 
 import { LoginService } from './login.service';
 import { PlayerService } from './player.service';
+import { UiGlobalService } from './ui-global.service';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PlayersheetComponent } from './playersheet/playersheet.component';
@@ -21,6 +24,8 @@ import { PlayerInfoComponent } from './playersheet/player-info/player-info.compo
 import { CreateComponent } from './create/create.component';
 import { InfoColumnsComponent } from './home/info-columns/info-columns.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { PlayerCardComponent } from './player-dashboard/player-list/player-card/player-card.component';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -52,16 +57,18 @@ const routes: Routes = [
     PlayerInfoComponent,
     CreateComponent,
     InfoColumnsComponent,
-    NavbarComponent
+    NavbarComponent,
+    PlayerCardComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    TextareaAutosizeModule
   ],
-  providers: [LoginService, PlayerService],
+  providers: [LoginService, PlayerService, UiGlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

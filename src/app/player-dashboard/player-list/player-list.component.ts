@@ -3,11 +3,12 @@ import { Player } from './../../../models/player';
 import { Observable } from 'rxjs/Observable';
 import { PlayerService } from './../../player.service';
 import { LoginService } from './../../login.service';
+import { PlayerCardComponent } from './player-card/player-card.component';
 
 @Component({
   selector: 'app-player-list',
   templateUrl: './player-list.component.html',
-  styleUrls: ['./player-list.component.sass']
+  styleUrls: ['./player-list.component.sass'],
 })
 export class PlayerListComponent implements OnInit {
   players: any;
@@ -16,15 +17,16 @@ export class PlayerListComponent implements OnInit {
   }
 
   ngOnInit() {
-       this.loginService.loggedInCheck();
        this.loginService._currentUser.subscribe(
          (currentUser) => {
            if (currentUser !== undefined) {
              this.currentUser = true;
-          this.playerService.getPlayersForUser();
-          this.playerService._playersArray.subscribe(
+             this.playerService.getPlayersForUser();
+             this.playerService._playersArray.subscribe(
           (players) => {
-            this.players = players;
+            if (players) {
+              this.players = players;
+            }
           }, (error) => {
             console.error(error);
           });

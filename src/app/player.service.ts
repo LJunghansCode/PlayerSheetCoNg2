@@ -28,17 +28,15 @@ export class PlayerService {
 
   constructor(private http: Http) { }
   public updateCurrentPlayer(player) {
-    console.log('updating function');
     this.updatePlayerById(player);
   }
   updatePlayerById(player) {
     this.http.post(this.updateUrl, {player}, this.options).subscribe(
       (res) => {
-        console.log(res)
-        this.getPlayerById(player.id)
+        const updated = this.instantiatePlayerFromDatabase(res);
       },
       (error) => {
-        console.error(error)
+        console.error(error);
       },
       () => {
         // done
@@ -88,8 +86,9 @@ export class PlayerService {
     const body = res.json();
     const bd = body.data;
     // tslint:disable-next-line:max-line-length BIG LINE //
-    const playerInstance = new Player(bd._id, bd.accountEmail, bd.campaign, bd.realName, bd.name, bd.race, bd.classType, bd.alignment, bd.sex, bd.size, bd.age, bd.height, bd.weight, bd.level, bd.initiative, bd.speed, bd.strength, bd.dexterity, bd.constitution, bd.intelligence, bd.wisdom, bd.charisma, bd.currentHitPoints, bd.tempHitPoints, bd.spellList, bd.experience, bd.skills, bd.personalityTraits, bd.ideals, bd.bonds, bd.flaws, bd.attacksSpellCasting, bd.featuresTraits, bd.equipment, bd.proficiencies, bd.languages, bd.appearance, bd.alliesOrganizations, bd.backStory, bd.treasureInventory, bd.spellCastingClass, bd.spellCastingAbility, bd.spellSaveDC, bd.spellSaveBonus, bd.armorClass, bd.proficiencyBonus, bd.borderColor, bd.companions, bd.notes);
+    const playerInstance = new Player(bd._id, bd.accountEmail, bd.campaign, bd.realName, bd.name, bd.race, bd.classType, bd.alignment, bd.sex, bd.size, bd.age, bd.height, bd.weight, bd.level, bd.initiative, bd.speed, bd.strength, bd.dexterity, bd.constitution, bd.intelligence, bd.wisdom, bd.charisma, bd.currentHitPoints, bd.tempHitPoints, bd.spellList, bd.experience, bd.skills, bd.personalityTraits, bd.ideals, bd.bonds, bd.flaws, bd.attacksSpellCasting, bd.featuresTraits, bd.equipment, bd.proficiencies, bd.languages, bd.appearance, bd.alliesOrganizations, bd.backStory, bd.treasureInventory, bd.spellCastingClass, bd.spellCastingAbility, bd.spellSaveDC, bd.spellSaveBonus, bd.armorClass, bd.proficiencyBonus, bd.borderColor, bd.companions, bd.notes, bd.portraitUrl);
     playerInstance.calculateModifiers();
+    playerInstance.masterStats = playerInstance.organizeStatsArray();
     return playerInstance;
   }
 }

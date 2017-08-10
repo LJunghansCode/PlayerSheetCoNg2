@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from './../login.service';
+import { UiGlobalService } from './../ui-global.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +12,7 @@ import { LoginService } from './../login.service';
 
 export class RegisterComponent implements OnInit {
   formMessage: string;
+  regStatus: boolean;
   public registerForm = this.fb.group({
     email: ['', Validators.required],
     userName: ['', Validators.required],
@@ -17,10 +20,10 @@ export class RegisterComponent implements OnInit {
     confirmPassword: ['', Validators.required]
   });
 
-  constructor(public fb: FormBuilder, public loginService: LoginService) {  }
+  constructor(private fb: FormBuilder, private loginService: LoginService, private route: Router, private uiService: UiGlobalService) {  }
   ngOnInit() {
   }
-    doCreate(event) {
+    registerNew(event) {
       const FIELD = this.registerForm.value;
       if (!FIELD.email) {
         this.formMessage = 'Please enter an email!';
@@ -31,7 +34,7 @@ export class RegisterComponent implements OnInit {
       } else if (!FIELD.confirmPassword) {
         this.formMessage = 'You forgot to confirm the password';
       } else if (FIELD.confirmPassword !== FIELD.password) {
-        this.formMessage = 'Sorry Passwords do not match';
+        this.formMessage = 'Sorry, passwords do not match';
       } else {
         this.loginService.newUser(FIELD)
                          .subscribe(
@@ -39,12 +42,50 @@ export class RegisterComponent implements OnInit {
                            if (user) {
                               this.formMessage = 'Thanks, you\'re registered!';
                               this.registerForm.reset();
+                              this.uiService.triggerRegSuccess();
+                              this.loginAfterRegister(FIELD.email, FIELD.password);
                            }
                          },
                            (error) => {
-                              this.formMessage = 'Sorry, something went wrong, please try again';
+                              if (error.Message === 'Invalid E-mail') {
+                                this.tryUserIfFail(FIELD.email, FIELD.password);
+                              } else {
+                                this.uiService.triggerRegFailure();
+                                this.formMessage = error.Message;
+                              }
+                         },
+                         () => {
+                           // User is logged in and service is updated
                          }
                        );
     }
+    }
+    loginAfterRegister(email, password) {
+       this.loginService.loginByCredentials(email, password).subscribe(
+         (user) => {
+           if (user) {
+            this.uiService.triggerRegSuccess();
+            this.uiService.toggleModal();
+            this.route.navigateByUrl('/player-dashboard');
+            window.location.reload();
+           }
+         }, (error) => {
+           this.formMessage = error.Message;
+         }
+       );
+    }
+    tryUserIfFail(email, password) {
+      this.loginService.loginByCredentials(email, password)
+      .subscribe(
+        (user) => {
+          this.loginService.updateUser(user);
+          this.route.navigateByUrl('/player-dashboard');
+        }, (error) => {
+          this.formMessage = error.Message;
+        }
+      );
+    }
+    registerStatus(regStatus) {
+      return this.uiService.registerStatus();
     }
 }

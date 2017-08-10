@@ -1,23 +1,66 @@
-
-<form id="registerForm" [formGroup]="registerForm" (ngSubmit)="doCreate($event);">
-      <h5 >{{formMessage}}</h5>
-       <section class="form-group">
-        <label for="Email">Email:</label>
-        <input type="email" class="input" formControlName="email" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-       </section>
-      <section class="form-group">
-        <label for="User Name">User Name:</label>
-        <input type="text" class="input" formControlName="userName" aria-describedby="emailHelp" placeholder="Enter Username">
-       </section>
-       <section class="form-group">
-        <label for="Password">Password:</label>
-        <input type="password" class="input" formControlName="password" aria-describedby="emailHelp" placeholder="Enter Password">
-       </section>
-       <section class="form-group">
-        <label for="Confirm Password">Confirm Password:</label>
-        <input type="password" class=" input" formControlName="confirmPassword" aria-describedby="emailHelp" placeholder="Confirm Password">
-       </section>
-    <button type="submit" class="button">Register</button>
-</form>
- 
+<div class="card">
+  <div class="card-content">
+    <form id="registerForm" [formGroup]="registerForm" (ngSubmit)="registerNew($event);">
+      <div class="top field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">User Name</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+              <input [ngClass]="registerStatus()" formControlName="userName" class="input" type="text" required placeholder="User Name">
+              <span class="icon is-small is-left">
+          <i class="fa fa-user"></i>
+        </span>
+            </p>
+          </div>
+          <div class="field-label is-normal">
+            <label class="label">Email</label>
+          </div>
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+              <input [ngClass]="registerStatus()" formControlName="email" class="input" type="email" placeholder="Email">
+              <span class="icon is-small is-left">
+          <i class="fa fa-envelope"></i>
+        </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="bottom field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">Password</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+              <input [ngClass]="registerStatus()" formControlName="password" class="input" type="password" required placeholder="Password">
+              <span class="icon is-small is-left">
+          <i class="fa fa-lock"></i>
+        </span>
+            </p>
+          </div>
+          <div class="field-label is-normal">
+            <label class="label">Confirm</label>
+          </div>
+          <div class="field">
+            <p class="control is-expanded has-icons-left has-icons-right">
+              <input [ngClass]="registerStatus()" formControlName="confirmPassword" class="input" type="password" placeholder="Confirm Password">
+              <span class="icon is-small is-left">
+          <i class="fa fa-check"></i>
+        </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    <button class="registerButton has-text-centered button is-primary submit">
+         Register!
+    </button>
+    </form>
+  </div>
+  <div class=" card-footer">
+    <div class="card-footer-item">
+      <p class="formError">{{formMessage}}</p>
+    </div>
+  </div>
+</div>

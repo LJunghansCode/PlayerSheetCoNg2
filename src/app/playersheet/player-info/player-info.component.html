@@ -1,5 +1,38 @@
-<div *ngIf='player'>
-  <input type="" [(ngModel)]='player.name'>
-  {{player.name}}
-  <button (click)="update()">Update And Save</button>
-</div>
+<main class="columns">
+  <div class="column is-4 is-center" *ngIf='player'>
+      <div *ngFor="let stat of basicInfo">
+        <div class="field">
+          <label for=""> {{stat.title}}</label>
+          <div class="control has-icons-left has-icons-right">
+            <input [ngClass]="ifEditing(stat)" (keyup)="maybeChanging(stat)" (blur)="registerChangeEnter(stat)" (keyup.enter)="registerChangeEnter(stat)" [(ngModel)]="player[stat.stat]" class="input" type="text" placeholder="{{stat.title}}">
+                <span class="icon is-small is-left">
+                  <i *ngIf="stat.editing" class="fa fa-save"></i>
+                  <i *ngIf="!stat.editing" class="fa fa-pencil"></i>
+                </span>
+                <span class="icon is-small is-right">
+                  <i *ngIf="stat.editing" class="fa fa-spinner fa-spin"></i>
+                  <i *ngIf="!stat.editing" class="fa fa-check"></i>
+                </span>
+        </div>
+        </div>
+      </div>
+  </div>
+  <div class="column is-4 is-center" *ngIf='player'>
+      <div *ngFor="let stat of details">
+        <div class="field">
+          <label for=""> {{stat.title}}</label>
+          <div class="control has-icons-left has-icons-right">
+            <textarea autosize [ngClass]="ifEditing(stat)" (keyup)="maybeChanging(stat)" (blur)="registerChangeEnter(stat)" (keyup.enter)="registerChangeEnter(stat)" [(ngModel)]="player[stat.stat]" class="textarea" type="text" placeholder="{{stat.title}}"></textarea>
+                <span class="icon is-small is-left">
+                  <i *ngIf="stat.editing" class="fa fa-save"></i>
+                  <i *ngIf="!stat.editing" class="fa fa-pencil"></i>
+                </span>
+                <span class="icon is-small is-right">
+                  <i *ngIf="stat.editing" class="fa fa-spinner fa-spin"></i>
+                  <i *ngIf="!stat.editing" class="fa fa-check"></i>
+                </span>
+        </div>
+        </div>
+      </div>
+  </div>
+</main>
