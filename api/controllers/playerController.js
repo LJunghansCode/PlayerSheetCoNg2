@@ -47,7 +47,7 @@ module.exports = (() => {
                 if (foundPlayer) {
                     res.json({message: true});
                 } else {
-                    res.json({message: false});
+                    res.status(404).send('Couldnt Delete');
                 }
             }); 
         };

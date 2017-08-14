@@ -1,1 +1,30 @@
-spell
+<main [@flyInOut] class="columns section">
+
+<div class="column">
+  <article class="spell-tome" *ngFor="let spell of spellList; let i = index" >
+   <div class="spellSingle card">
+     <div class="card-header">
+       <div class="card-header-title">
+         <p>{{spell.title}}</p>
+       </div>
+       <div class="card-header-icon">
+      <span (click)="delete(i)"class="icon">
+        <i class="fa fa-trash"></i>
+      </span>
+       </div>
+     </div>
+     <div class="card-content">
+      {{spell.description}}
+    </div>
+      <footer class="card-footer">
+  </footer>
+   </div>
+  </article>
+</div>
+<div class="column is-2 ">
+  <div class="view-side-form">
+      <router-outlet></router-outlet>
+  </div>
+  <button class="button is-primary" [routerLink]="['new']">New Spell</button>
+</div>
+</main>

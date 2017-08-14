@@ -54,7 +54,7 @@ export class LoginService {
           this.currentUserSource.next(user);
         }
       }, (error) => {
-        console.error(error.Message)
+        console.error(error.json().Message);
       });
   }
   private processData(res: Response) {

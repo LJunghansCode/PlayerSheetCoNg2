@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { PlayerService } from './player.service';
 
 @Injectable()
 export class UiGlobalService {
@@ -9,7 +10,9 @@ export class UiGlobalService {
   regFormStatus: boolean;
   logFormSucc: boolean;
 
-  constructor() { }
+  waiting: any;
+
+  constructor(private playerService: PlayerService) { }
   toggleModal() {
     const regMod = this.registerModal;
     if (regMod === false || regMod === undefined) {

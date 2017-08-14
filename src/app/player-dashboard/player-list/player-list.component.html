@@ -1,5 +1,5 @@
 <div class="listContainer">
-      <div class="charContainer" *ngFor="let char of players">
+      <div class="charContainer" *ngFor="let char of players" [@slideInOutAnimation]>        
         <app-player-card [player]="char"></app-player-card>
       </div>
  </div>

@@ -1,0 +1,35 @@
+<div [@slideFullAnimation] class="modal is-active">
+  <div [routerLink]="['../']"class="modal-background"></div>
+  <div class="modal-card">
+    <div class="modal-card-body">
+    <form [formGroup]="spellForm" (ngSubmit)="newSpell();">
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+              <input formControlName="title" class="input" type="text" required placeholder="Title">
+              <span class="icon is-small is-left">
+          <i class="fa fa-angle-right"></i>
+        </span>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+              <textarea autosize formControlName="description" class="input" type="email" placeholder="Description"></textarea>
+              <span class="icon is-small is-left">
+          <i class="fa fa-align-center"></i>
+        </span>
+            </p>
+          </div>
+    </form>
+    </div>
+    <div class="modal-card-foot">
+        <button (click)="newSpell()" class="is-centered button is-primary submit">
+         Add Spell
+    </button>
+    <a [routerLink]="['../']">Cancel</a>
+        <p class="formMessage">{{formMessage}}</p>
+    </div>
+
+</div>
+
+
+</div>

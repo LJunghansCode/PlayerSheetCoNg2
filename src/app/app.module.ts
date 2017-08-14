@@ -1,14 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-import { TextareaAutosizeModule } from 'ngx-textarea-autosize'
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { LoginService } from './login.service';
 import { PlayerService } from './player.service';
 import { UiGlobalService } from './ui-global.service';
+import {FormService } from './form.service';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PlayersheetComponent } from './playersheet/playersheet.component';
@@ -25,6 +27,7 @@ import { CreateComponent } from './create/create.component';
 import { InfoColumnsComponent } from './home/info-columns/info-columns.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PlayerCardComponent } from './player-dashboard/player-list/player-card/player-card.component';
+import { SpellFormComponent } from './playersheet/spell-form/spell-form.component';
 
 
 const routes: Routes = [
@@ -34,7 +37,10 @@ const routes: Routes = [
       children: [
         {path: '', redirectTo: 'info', pathMatch: 'full'},
         {path: 'info', component: PlayerInfoComponent },
-        {path: 'spells', component: PlayerSpellsComponent },
+        {path: 'spells', component: PlayerSpellsComponent,
+          children: [
+            {path: 'new', component: SpellFormComponent},
+          ] },
         {path: 'details', component: PlayerDetailsComponent },
       ] },
   { path: 'create', component: CreateComponent},
@@ -59,6 +65,7 @@ const routes: Routes = [
     InfoColumnsComponent,
     NavbarComponent,
     PlayerCardComponent,
+    SpellFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,9 +73,10 @@ const routes: Routes = [
     HttpModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
-    TextareaAutosizeModule
+    TextareaAutosizeModule,
+    BrowserAnimationsModule
   ],
-  providers: [LoginService, PlayerService, UiGlobalService],
+  providers: [LoginService, PlayerService, UiGlobalService, FormService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

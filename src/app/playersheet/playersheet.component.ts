@@ -17,6 +17,11 @@ export class PlayersheetComponent implements OnInit {
   currPartial: string;
   slots: any;
   masterStat: any;
+  routeMap = [
+      {'name': 'spells', 'title': 'Spell Details', 'active': false},
+      {'name': 'info', 'title': 'General Information', 'active': false},
+      {'name': 'details', 'title': 'Inventory and Equipment', 'active': false},
+    ];
 
   constructor(  private playerService: PlayerService,
   private route: ActivatedRoute,
@@ -30,7 +35,6 @@ export class PlayersheetComponent implements OnInit {
         if (!this.player && player) {
             this.player = player;
             this.player.masterStats = this.player.organizeStatsArray();
-            console.log(this.player.masterStats)
         }
       }, (error) => {
         console.error(error);
@@ -38,6 +42,29 @@ export class PlayersheetComponent implements OnInit {
         // done
       });
    });
+  }
+  getRoute(route) {
+    return route.name;
+  }
+  ifActive(route) {
+    const currLink = document.getElementsByClassName('is-active');
+    if (currLink[0]) {
+   
+    }
+    const currentPath = this.location.path();
+    let endString = '';
+    for (let i = currentPath.length - 1; i < currentPath.length; i--) {
+      if(currentPath[i] === '/') {
+        break;
+      }
+      endString += currentPath[i];
+    }
+    const final = endString.split('').reverse().join('');
+    if (final === route.name) {
+      return 'is-active';
+    } else {
+      return '';
+    }
   }
 
 

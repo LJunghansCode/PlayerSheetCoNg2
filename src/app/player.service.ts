@@ -19,6 +19,7 @@ export class PlayerService {
   getPlayersUrl = 'api/get_my_players';
   playerIdURl = 'api/get_player';
   updateUrl = 'api/update_player';
+  deletePlayer = 'api/delete_player';
   // Curr Player Truth
   private playersSource = new BehaviorSubject(undefined);
   public _playersArray: Observable<Player[]> = this.playersSource.asObservable();
@@ -46,7 +47,6 @@ export class PlayerService {
   newPlayer(playerForm: FormData) {
     this.http.post(this.newPlayerUrl, { playerForm }, this.options)
       .map(this.processNewPlayer).subscribe();
-    this.getPlayersForUser();
   }
   getPlayersForUser() {
     this.http.get(this.getPlayersUrl, this.options)
@@ -71,6 +71,11 @@ export class PlayerService {
       () => {
         // gotem
       });
+  }
+  deletePlayerById(id) {
+    this.http.post(this.deletePlayer, {id: id}, this.options)
+    .subscribe();
+    this.getPlayersForUser();
   }
   private processPlayers(res: Response) {
     const body = res.json();

@@ -2,11 +2,7 @@
   <section class="column is-2">
     <aside class="player-side-nav">
       <ul>
-        <li> <a class="nav-item" [routerLink]="['spells']">Spells</a> </li>
-        <li> <a class="nav-item" [routerLink]="['details']">Details</a> </li>
-        <li> <a class="nav-item" [routerLink]="['info']">Info</a> </li>
-        <li> <a class="nav-item">Join a campaign!</a></li>
-
+        <li *ngFor="let route of routeMap" [ngClass]="ifActive(route)"> <a class="nav-item" [routerLink]="[getRoute(route)]">{{route.title}}</a> </li>
       </ul>
     </aside>
   </section>
@@ -14,11 +10,6 @@
     <div *ngIf="!player">
       <h1>Looking for player...</h1>
     </div>
-    <div *ngIf="player" class="hero is-light">
-      <section class="hero-body">
-        <h1 class="playerName title">{{player.name}} the level {{player.level}} {{player.classType}}</h1>
-      </section>
-    </div>
-    <router-outlet class="sheetPartial"></router-outlet>
+     <router-outlet ></router-outlet>
   </section>
 </main>

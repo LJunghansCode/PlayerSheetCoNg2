@@ -103,9 +103,7 @@ module.exports = (() => {
     getUser: (req, res) => {
       var sess = req.session;
       if (!sess.user) {
-        res.status(404).send({
-          Message: 'User Not Found'
-        });
+        res.status(204);
       } else {
         res.json({
           user: sess.user

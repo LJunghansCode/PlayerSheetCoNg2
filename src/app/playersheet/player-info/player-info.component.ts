@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayerService } from './../../player.service';
+import { FormService } from './../../form.service';
 import { Player } from './../../../models/player';
+import { slideBotAnimation } from './../../_animations/slideBotAnim';
 
 @Component({
   selector: 'app-player-info',
   templateUrl: './player-info.component.html',
-  styleUrls: ['./player-info.component.sass']
+  styleUrls: ['./player-info.component.sass'],
+  animations: [slideBotAnimation],
+
 })
 export class PlayerInfoComponent implements OnInit {
   player: Player;
   basicInfo: any[];
   details: any[];
-  waiting: any;
-  constructor(private playerService: PlayerService) { }
+  constructor(private playerService: PlayerService, private formService: FormService) { }
 
   ngOnInit() {
     this.playerService._playerSingle
@@ -30,36 +33,19 @@ export class PlayerInfoComponent implements OnInit {
         // got player
       });
   }
+  // Form Logic from Service
   update() {
-    this.playerService.updateCurrentPlayer(this.player);
+    this.formService.updatePlayerDbCall(this.player);
   }
   maybeChanging(stat) {
-    stat.editing = true;
-    clearTimeout(stat.waiting);
+    this.formService.currentlyChanging(stat);
   }
 
-  registerChangeEnter(stat) {
-  if (stat.value === this.player[stat.stat]) {
-    stat.editing = false;
-  } else {
-    stat.editing = true;
-    // Store 'this' to use in timeout
-    const that = this;
-    stat.waiting = setTimeout(function(){
-      that.playerService.updateCurrentPlayer(that.player);
-      stat.editing = false;
-    }, 2000);
-    stat.value = this.player[stat.stat];
-  }
+  registerChangeEnter(stat, player) {
+    this.formService.fieldChangedCallDbAfterWait(stat, player);
   }
   ifEditing(stat) {
-    if (stat) {
-      if (stat.editing) {
-        return 'is-editing';
-      } else {
-        return 'done-editing';
-      }
-    }
+    return this.formService.editCssToggle(stat);
   }
 
 }

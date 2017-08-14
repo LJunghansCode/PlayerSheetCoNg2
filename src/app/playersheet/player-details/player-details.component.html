@@ -1,3 +1,13 @@
-<p>
-  player-details works!
-</p>
+  <div class="statContainer column" [@flyInOut] *ngIf='player'>
+      <div class="box" *ngFor="let stat of details">
+       <strong>  <label for=""> {{stat.title}}</label> </strong>
+        <div class="control has-icons-right">
+          <textarea autosize [ngClass]="ifEditing(stat)" (keyup)="maybeChanging(stat)" (blur)="registerChangeEnter(stat, player)" (keyup.enter)="registerChangeEnter(stat, player)"
+            [(ngModel)]="player[stat.stat]" class="textarea" type="text" placeholder="{{stat.title}}"></textarea>
+          <span class="icon is-small is-right">
+                  <i *ngIf="stat.editing" class="fa fa-spinner fa-spin"></i>
+                  <i *ngIf="!stat.editing" class="fa fa-check"></i>
+          </span>
+        </div>
+      </div>
+  </div>
