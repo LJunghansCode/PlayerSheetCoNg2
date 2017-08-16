@@ -1,15 +1,21 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PlayerService } from './../../../player.service';
 import { Player } from './../../../../models/player';
+import { slideInOutAnimation } from './../../../_animations/slideAnim';
+import { fadeInAnimation } from './../../../_animations/fadeAnim';
+import { slideLeftAnimation } from './../../../_animations/slideBotAnim';
 
 @Component({
   selector: 'app-player-card',
   templateUrl: './player-card.component.html',
-  styleUrls: ['./player-card.component.sass']
+  styleUrls: ['./player-card.component.sass'],
+  animations: [slideInOutAnimation, fadeInAnimation, slideLeftAnimation],
 })
 export class PlayerCardComponent implements OnInit {
-    @Input()
+  @Input()
   player: Player;
+  @Input()
+  index: any;
 
   constructor(public playerService: PlayerService) { }
 
@@ -17,6 +23,7 @@ export class PlayerCardComponent implements OnInit {
   ngOnInit() {
   }
   delete(id) {
-    this.playerService.deletePlayerById(id);
+    console.log(this.index);
+    this.playerService.deletePlayerById(id, this.index);
   }
 }

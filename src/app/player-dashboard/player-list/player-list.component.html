@@ -1,5 +1,5 @@
-<div class="listContainer">
-      <div class="charContainer" *ngFor="let char of players" [@slideInOutAnimation]>        
-        <app-player-card [player]="char"></app-player-card>
+<div class="listContainer" [dragula]='"players-bag"' [dragulaModel]='players'>
+      <div class="charContainer" @slideLeftAnimation *ngFor="let char of players; let i = index">       
+        <app-player-card [player]="char" [index]="i"></app-player-card>
       </div>
  </div>

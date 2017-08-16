@@ -1,0 +1,46 @@
+<main class="columns section">
+
+<div class="column is-11">
+  <article @slideLeftAnimation *ngFor="let comp of companions; let i = index" >
+<div class="card compCard">
+  <header class="card-header">
+    <p (click)="expand(comp)"class="card-header-title">
+     {{comp.name}}
+    </p>
+    <a (click)="expand(comp)"class="card-header-icon is-left">
+      <span *ngIf="!comp.expandedTrigger" class="icon">
+        <i class="fa fa-caret-down"></i>
+      </span>
+      <span *ngIf="comp.expandedTrigger" class="icon">
+        <i class="fa fa-caret-up"></i>
+      </span>
+    </a>
+
+    <a (click)="deleteCompanion(i)" class="card-header-icon">
+      <span class="icon">
+        <i class="fa fa-trash"></i>
+      </span>
+    </a>
+
+  </header>
+  <div class="containerForSlide">
+    <div @slideTopAnimationRev *ngIf="expanded(comp)" class="card-content">
+          <div *ngFor="let stat of formGuideLayout" class="control has-icons-right">
+            <label class="label" for="">{{stat.placeholder}}</label>
+              <input autosize [ngClass]="ifEditing(stat)" (keyup)="maybeChanging(stat)" (blur)="registerChangeEnter(stat, player)"
+                [(ngModel)]="comp[stat.field]" class="input" type="text" placeholder="{{stat.placeholder}}">
+              <span class="icon is-small is-right">
+                      <i *ngIf="stat.editing" class="fa fa-spinner fa-spin"></i>
+                      <i *ngIf="!stat.editing" class="fa fa-check"></i>
+              </span>
+            </div>
+    </div>
+  </div>
+</div>
+  </article>
+</div>
+  <div>
+      <router-outlet></router-outlet>
+  </div>
+
+</main>

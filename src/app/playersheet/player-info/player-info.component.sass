@@ -5,15 +5,25 @@
  &:focus
   border: 1px solid green
 
-textarea
- margin: 3%
 .statContainer
  margin: 3%
  display: flex
  flex-direction: row
  flex-wrap: wrap
+
 .box
- text-align: center
  margin: 10px
  padding: 2%
  width: 31%
+
+.flashit
+ background-color: green
+
+
+@-webkit-keyframes flash 
+ 0% { opacity: 0; background-color: green } 
+ 100% { opacity: 1; background-color: green }
+
+@keyframes flash 
+ 0% { opacity: 1; background-color: green }  
+ 100% { opacity: 0; background-color: green }

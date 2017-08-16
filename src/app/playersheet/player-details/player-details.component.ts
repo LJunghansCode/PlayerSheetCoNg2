@@ -3,14 +3,14 @@ import { PlayerService } from './../../player.service';
 import { FormService } from './../../form.service';
 import { Player } from './../../../models/player';
 import { slideInOutAnimation } from './../../_animations/slideAnim';
-import { slideBotAnimation } from './../../_animations/slideBotAnim';
+import { slideLeftAnimation } from './../../_animations/slideBotAnim';
 
 
 @Component({
   selector: 'app-player-details',
   templateUrl: './player-details.component.html',
   styleUrls: ['./player-details.component.sass'],
-  animations: [slideInOutAnimation, slideBotAnimation ],
+  animations: [slideInOutAnimation, slideLeftAnimation ],
 })
 export class PlayerDetailsComponent implements OnInit {
   player: Player;

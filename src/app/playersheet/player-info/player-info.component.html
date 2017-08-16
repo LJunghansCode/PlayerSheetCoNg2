@@ -1,15 +1,11 @@
 <main class="columns">
-  <div class="statContainer column" [@flyInOut] *ngIf='player'>
+  <div class="statContainer column" [dragula]='"info-bag"' [dragulaModel]='basicInfo' @slideLeftAnimation *ngIf='player'>
     <div class="box" *ngFor="let stat of basicInfo">
         <article class="singleStat">
          <strong> <label for=""> {{stat.title}}</label> </strong>
-          <div class="control has-icons-left has-icons-right">
-            <input autosize [ngClass]="ifEditing(stat)" (keyup)="maybeChanging(stat)" (blur)="registerChangeEnter(stat, player)" (keyup.enter)="registerChangeEnter(stat, player)"
+          <div class="control has-icons-right">
+            <input autosize [ngClass]="ifEditing(stat)" (keyup)="maybeChanging(stat)" (blur)="registerChangeEnter(stat, player)"
               [(ngModel)]="player[stat.stat]" class="input" type="text" placeholder="{{stat.title}}">
-            <span class="icon is-small is-left">
-                    <i *ngIf="stat.editing" class="fa fa-save"></i>
-                    <i *ngIf="!stat.editing" class="fa fa-pencil"></i>
-                  </span>
             <span class="icon is-small is-right">
                     <i *ngIf="stat.editing" class="fa fa-spinner fa-spin"></i>
                     <i *ngIf="!stat.editing" class="fa fa-check"></i>

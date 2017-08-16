@@ -1,8 +1,9 @@
-<main class="columns">
+<main @slideTopAnimation class="columns">
   <section class="column is-2">
-    <aside class="player-side-nav">
-      <ul>
-        <li *ngFor="let route of routeMap" [ngClass]="ifActive(route)"> <a class="nav-item" [routerLink]="[getRoute(route)]">{{route.title}}</a> </li>
+    <aside class="player-side-nav menu">
+      <p *ngIf="player"class="menu-label">{{player.name}} the {{player.classType}}</p>
+      <ul class="menu-list">
+        <li class="nav-item" *ngFor="let route of routeMap"> <a [ngClass]="ifActive(route)" [routerLink]="[getRoute(route)]">{{route.title}}</a> </li>
       </ul>
     </aside>
   </section>
@@ -10,6 +11,27 @@
     <div *ngIf="!player">
       <h1>Looking for player...</h1>
     </div>
+    <div @slideTopAnimation *ngIf="player">
+      <section class="hero is-primary sheetHero">
+          <div class="hero-body">
+            <div class="container">
+             <p @fadeInAnimation class="title is-1"> {{currPartial}} </p>
+            </div>
+          </div> 
+        <div class="hero-foot">
+          <nav class="tabs is-right">
+            <div class="container">
+              <ul>
+                <li [routerLink]="[ 'spells/new' ]"><a>New Spell</a></li>
+                <li [routerLink]="[ 'companions/new' ]"><a>New Companion</a></li>
+                <li [routerLink]="[ 'notes/new' ]"><a>Quick Note</a></li>
+                <li> <input class="input" type="text" placeholder="search"></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+</section>
      <router-outlet ></router-outlet>
+    </div>
   </section>
 </main>

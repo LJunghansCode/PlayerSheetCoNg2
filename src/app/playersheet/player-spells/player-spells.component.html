@@ -1,7 +1,6 @@
-<main [@flyInOut] class="columns section">
-
-<div class="column">
-  <article class="spell-tome" *ngFor="let spell of spellList; let i = index" >
+<article class="columns section">
+<div class="spellsContainer column" [dragulaModel]='spellList' [dragula]="'spell-bag'">
+  <article @slideLeftAnimation class="spell-tome" *ngFor="let spell of spellList; let i = index" >
    <div class="spellSingle card">
      <div class="card-header">
        <div class="card-header-title">
@@ -21,10 +20,7 @@
    </div>
   </article>
 </div>
-<div class="column is-2 ">
-  <div class="view-side-form">
+  <div>
       <router-outlet></router-outlet>
   </div>
-  <button class="button is-primary" [routerLink]="['new']">New Spell</button>
-</div>
-</main>
+</article>

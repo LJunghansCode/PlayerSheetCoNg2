@@ -3,12 +3,17 @@ import { PlayerService } from './player.service';
 
 @Injectable()
 export class FormService {
-
+  editingForm: boolean;
   constructor(private playerService: PlayerService) { }
 
 
 updatePlayerDbCall(player) {
   this.playerService.updateCurrentPlayer(player);
+}
+saveAllChanges(player) {
+  if (!this.editingForm) {
+
+  }
 }
 fieldChangedCallDbAfterWait(stat, player) {
   if (stat.value === player[stat.stat]) {
@@ -26,14 +31,18 @@ fieldChangedCallDbAfterWait(stat, player) {
 }
 editCssToggle(stat) {
       if (stat) {
-      if (stat.editing) {
-        return 'is-editing';
-      } else {
-        return 'done-editing';
-      }
-    }
+        if (stat.editing) {
+          return 'is-editing';
+        } else if (stat.editing === undefined )  {
+          return 'done-editing';
+        } else if (!stat.editing) {
+            return 'done-editing';
+          }
+        }
 }
 currentlyChanging(stat) {
+
+    stat.editing = true;
     clearTimeout(stat.waiting);
   }
 }

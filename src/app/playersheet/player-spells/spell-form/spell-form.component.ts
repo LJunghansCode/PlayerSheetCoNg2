@@ -1,17 +1,17 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { slideFullAnimation } from './../../_animations/fullSlide';
-import { slideBotAnimation } from './../../_animations/slideBotAnim';
-import { PlayerService } from './../../player.service';
-import { FormService } from './../../form.service';
-import { Player } from './../../../models/player';
-import { Spell } from './../../../models/spell';
+import { slideFullAnimation } from './../../../_animations/fullSlide';
+import { slideLeftAnimation } from './../../../_animations/slideBotAnim';
+import { PlayerService } from './../../../player.service';
+import { FormService } from './../../../form.service';
+import { Player } from './../../../../models/player';
+import { Spell } from './../../../../models/spell';
 
 @Component({
   selector: 'app-spell-form',
   templateUrl: './spell-form.component.html',
   styleUrls: ['./spell-form.component.sass'],
-  animations: [slideFullAnimation ]
+  animations: [slideFullAnimation, slideLeftAnimation ]
 })
 export class SpellFormComponent implements OnInit {
   player: Player;

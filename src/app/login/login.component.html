@@ -1,5 +1,3 @@
-<p class="formError">{{formMessage}}</p>
-
     <form id="loginForm" [formGroup]="loginForm" (ngSubmit)="loginUser($event);">
         <input id="input-1" formControlName="email" type="email" placeholder="example@address.com" required autofocus />
         <label for="input-1">
@@ -16,4 +14,5 @@
         <p class="tip">Press Tab</p>
         <div class="signup-button">Welcome Back! Click here to log in</div>
     </form>
+    <p class="formError">{{formMessage}}</p>
 

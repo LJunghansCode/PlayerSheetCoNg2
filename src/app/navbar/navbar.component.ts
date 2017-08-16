@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { UiGlobalService } from './../ui-global.service';
 import { LoginService } from './../login.service';
 import { Router } from '@angular/router';
+import { fadeInAnimation } from './../_animations/fadeAnim';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.sass']
+  styleUrls: ['./navbar.component.sass'],
+  animations: [fadeInAnimation]
 })
 export class NavbarComponent implements OnInit {
   loginModal: boolean;

@@ -1,5 +1,7 @@
-<div class="card">
-  <div class="card-content">
+<div class="modal is-active">
+<div [@fadeInAnimation] [routerLink]="['../']" class="modal-background"></div>
+<div [@slideLeftAnimation] class="modal-card">
+  <div class="modal-card-body">
     <form id="registerForm" [formGroup]="registerForm" (ngSubmit)="registerNew($event);">
       <div class="top field is-horizontal">
         <div class="field-label is-normal">
@@ -63,4 +65,5 @@
       <p class="formError">{{formMessage}}</p>
     </div>
   </div>
+</div>
 </div>

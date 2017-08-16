@@ -1,5 +1,5 @@
-<main class="homeContainer hero has-text-centered">
-  <div class="her-body">
+<main [@slideRightAnimation] class="homeContainer hero has-text-centered">
+  <div class="hero-body">
     <p class="welcomeTitle">Welcome to Player Sheet Co.</p>
     <p class="mainTitle">  Managing your alter egos can be hard...</p>
     <p class="subTitle">Introducing a simple solution for keeping track of your characters.</p>
@@ -8,12 +8,15 @@
 
 <app-info-columns></app-info-columns>
   
-<section class="hero createButtonContainer">
+<section [@slideTopAnimation] class="hero createButtonContainer">
   <div class="hero-body">
     <div class="has-text-centered">
-         <button class="button createButton" (click)="toggleModal()"><p class="btnText">Register Now!</p><span class=" btnIcon icon is-large">
+         <button class="button createButton" [routerLink]="['register']"><p class="btnText">Register Now!</p><span class=" btnIcon icon is-large">
              <i class="fa fa-angle-double-right"></i>
         </span></button>
     </div>
   </div>
 </section>
+  <div>
+      <router-outlet></router-outlet>
+  </div>

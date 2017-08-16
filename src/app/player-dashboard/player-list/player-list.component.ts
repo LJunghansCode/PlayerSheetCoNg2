@@ -5,15 +5,14 @@ import { PlayerService } from './../../player.service';
 import { LoginService } from './../../login.service';
 import { PlayerCardComponent } from './player-card/player-card.component';
 import { fadeInAnimation } from './../../_animations/fadeAnim';
-import { activeAnimation } from './../../_animations/editAnim';
-import { slideInOutAnimation } from './../../_animations/slideAnim';
+import { slideLeftAnimation } from './../../_animations/slideBotAnim';
 
 
 @Component({
   selector: 'app-player-list',
   templateUrl: './player-list.component.html',
   styleUrls: ['./player-list.component.sass'],
-  animations: [fadeInAnimation, slideInOutAnimation, activeAnimation],
+  animations: [fadeInAnimation, slideLeftAnimation],
 })
 export class PlayerListComponent implements OnInit {
   players: Player[];
@@ -35,9 +34,6 @@ export class PlayerListComponent implements OnInit {
          }, () => {   }
        );
 
-  }
-  delete(id) {
-    this.playerService.deletePlayerById(id);
   }
   subToPlayers() {
                  this.playerService._playersArray.subscribe(

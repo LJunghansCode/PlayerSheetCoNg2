@@ -1,4 +1,4 @@
-  <div class="statContainer column" [@flyInOut] *ngIf='player'>
+  <div class="statContainer column" [dragula]='"details-bag"' [dragulaModel]='deatails'  [@slideLeftAnimation] *ngIf='player'>
       <div class="box" *ngFor="let stat of details">
        <strong>  <label for=""> {{stat.title}}</label> </strong>
         <div class="control has-icons-right">

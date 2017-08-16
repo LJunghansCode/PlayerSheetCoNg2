@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { PlayerService } from './../../player.service';
 import { FormService } from './../../form.service';
 import { Player } from './../../../models/player';
-import { slideBotAnimation } from './../../_animations/slideBotAnim';
+import { slideLeftAnimation } from './../../_animations/slideBotAnim';
 
 @Component({
   selector: 'app-player-info',
   templateUrl: './player-info.component.html',
   styleUrls: ['./player-info.component.sass'],
-  animations: [slideBotAnimation],
+  animations: [slideLeftAnimation],
 
 })
 export class PlayerInfoComponent implements OnInit {
@@ -34,6 +34,7 @@ export class PlayerInfoComponent implements OnInit {
       });
   }
   // Form Logic from Service
+
   update() {
     this.formService.updatePlayerDbCall(this.player);
   }

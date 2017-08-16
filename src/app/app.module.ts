@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DragulaModule } from 'ng2-dragula';
 
 
 import { LoginService } from './login.service';
@@ -27,16 +28,34 @@ import { CreateComponent } from './create/create.component';
 import { InfoColumnsComponent } from './home/info-columns/info-columns.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PlayerCardComponent } from './player-dashboard/player-list/player-card/player-card.component';
-import { SpellFormComponent } from './playersheet/spell-form/spell-form.component';
+import { SpellFormComponent } from './playersheet/player-spells/spell-form/spell-form.component';
+import { CompanionsComponent } from './playersheet/companions/companions.component';
+import { NoteBookComponent } from './playersheet/note-book/note-book.component';
+import { PlayerSettingsComponent } from './playersheet/player-settings/player-settings.component';
+import { AboutPageComponent } from './about-page/about-page.component';
+import { NewCompanionComponent } from './playersheet/companions/new-companion/new-companion.component';
 
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'player-dashboard', component: PlayerDashboardComponent },
+  { path: 'home', component: HomeComponent,
+    children: [
+      { path: 'register', component: RegisterComponent},
+      { path: 'login', component: LoginComponent}
+    ]},
+  { path: 'player-dashboard', component: PlayerDashboardComponent,
+        children: [
+          {path: 'new', component: NewPlayerComponent}
+        ] },
   { path: 'player/:id', component: PlayersheetComponent,
       children: [
         {path: '', redirectTo: 'info', pathMatch: 'full'},
         {path: 'info', component: PlayerInfoComponent },
+        {path: 'companions', component: CompanionsComponent,
+          children: [
+            {path: 'new', component: NewCompanionComponent},
+          ] },
+        {path: 'notes', component: NoteBookComponent },
+        {path: 'settings', component: PlayerSettingsComponent },
         {path: 'spells', component: PlayerSpellsComponent,
           children: [
             {path: 'new', component: SpellFormComponent},
@@ -44,6 +63,7 @@ const routes: Routes = [
         {path: 'details', component: PlayerDetailsComponent },
       ] },
   { path: 'create', component: CreateComponent},
+  { path: 'about', component: AboutPageComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: '**', component: PagenotfoundComponent }
 ];
@@ -66,6 +86,11 @@ const routes: Routes = [
     NavbarComponent,
     PlayerCardComponent,
     SpellFormComponent,
+    CompanionsComponent,
+    NoteBookComponent,
+    PlayerSettingsComponent,
+    AboutPageComponent,
+    NewCompanionComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,7 +99,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     TextareaAutosizeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DragulaModule
   ],
   providers: [LoginService, PlayerService, UiGlobalService, FormService],
   bootstrap: [AppComponent]

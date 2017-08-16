@@ -1,0 +1,27 @@
+<div class="modal is-active">
+  <div [routerLink]="['../']" class="modal-background"></div>
+  <div @slideLeftAnimation class="modal-card">
+    <div class="modal-card-body">
+    <form [formGroup]="companionForm">
+          <div *ngFor="let f of formGuideLayout" class="field">
+            <div class="control is-expanded has-icons-left">
+              <textarea autosize formControlName="{{f.field}}" class="input" type="text" required placeholder="{{f.placeholder}}"></textarea>
+              <span class="icon is-small is-left">
+          <i class="fa fa-angle-right"></i>
+        </span>
+            </div>
+          </div>
+    </form>
+    </div>
+    <div class="modal-card-foot">
+        <button (click)="newCompanion()" class="is-centered button is-primary submit">
+         Add Companion
+    </button>
+    <a [routerLink]="['../']">Cancel</a>
+        <p class="formMessage">{{formMessage}}</p>
+    </div>
+
+</div>
+
+
+</div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { slideInOutAnimation } from './../../_animations/slideAnim';
-import { slideBotAnimation } from './../../_animations/slideBotAnim';
+import { slideLeftAnimation } from './../../_animations/slideBotAnim';
 import { PlayerService } from './../../player.service';
 import { FormService } from './../../form.service';
 import { Player } from './../../../models/player';
@@ -10,7 +10,7 @@ import { Spell } from './../../../models/spell';
   selector: 'app-player-spells',
   templateUrl: './player-spells.component.html',
   styleUrls: ['./player-spells.component.sass'],
-  animations: [slideInOutAnimation, slideBotAnimation ]
+  animations: [slideInOutAnimation, slideLeftAnimation ]
 })
 export class PlayerSpellsComponent implements OnInit {
     player: Player;

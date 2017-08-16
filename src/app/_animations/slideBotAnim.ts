@@ -1,19 +1,16 @@
-import { trigger, state, animate, transition, style } from '@angular/animations';
-export const slideBotAnimation =
+import { trigger, state, animate, transition, style, query, animateChild } from '@angular/animations';
+export const slideLeftAnimation =
     // trigger name for attaching this animation to an element using the [@triggerName] syntax
-    trigger('flyInOut', [
-    state('in', style({opacity: 1, transform: 'translateX(0)'})),
-    transition('void => *', [
-      style({
-        opacity: 0,
-        transform: 'translateX(100%)'
-      }),
-      animate('0.4s ease-in')
-    ]),
-    transition('* => void', [
-      animate('0.3s 0.1s ease-out', style({
-        opacity: 0,
-        transform: 'translateX(100%)'
-      }))
-    ])
+    trigger('slideLeftAnimation', [
+      transition(':enter', [
+        style({
+          opacity: 0,
+          transform: 'translateX(100%)'
+        }),
+        animate('0.5s ease-in')
+      ]),
+      transition(':leave', [
+        animate(100, style({transform: 'translateX(100%)'}))
+      ])
   ]);
+

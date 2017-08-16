@@ -3,11 +3,14 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from './../login.service';
 import { UiGlobalService } from './../ui-global.service';
 import { Router } from '@angular/router';
+import { slideLeftAnimation } from './../_animations/slideBotAnim';
+import { fadeInAnimation } from './../_animations/fadeAnim';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.sass']
+  styleUrls: ['./register.component.sass'],
+  animations: [slideLeftAnimation, fadeInAnimation]
 })
 
 export class RegisterComponent implements OnInit {

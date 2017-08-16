@@ -1,6 +1,6 @@
-<div [@slideFullAnimation] class="modal is-active">
-  <div [routerLink]="['../']"class="modal-background"></div>
-  <div class="modal-card">
+<div class="modal is-active">
+  <div [routerLink]="['../']" class="modal-background"></div>
+  <div [@slideLeftAnimation] class="modal-card">
     <div class="modal-card-body">
     <form [formGroup]="spellForm" (ngSubmit)="newSpell();">
           <div class="field">

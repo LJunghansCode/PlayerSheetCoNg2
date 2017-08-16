@@ -1,4 +1,4 @@
-<nav class="navbar is-transparent">
+<nav [@fadeInAnimation] class="navbar is-transparent">
   <div class="navbar-brand">
     <a class="navbar-item" href="/home">
       <img src="./../../assets/swordsVG.svg"  width="112" height="28">
@@ -14,7 +14,7 @@
        <a class="navbar-item" *ngIf="ifPlayer()" href="/player-dashboard"><span class="icon is-medium"><i class="fa fa-users"></i></span>Dashboard</a>
        <a class="navbar-item" *ngIf="ifPlayer()" (click)="logOutCurrent()"><span class="icon is-medium"><i class="fa fa-sign-out"></i></span>Log Out</a>
        <!-- ALWAYS -->
-      <a class="navbar-item" href="/contact"><span class="icon is-medium"><i class="fa fa-question"></i></span>About Us</a>
+      <a class="navbar-item" href="/about"><span class="icon is-medium"><i class="fa fa-question"></i></span>About Us</a>
       <a class="navbar-item" href="https://github.com/LJunghansCode/PlayerSheetCoNg2" target="_blank">
       <span class="icon is-medium"><i class="fa fa-github-square"></i></span> Github
       </a>
