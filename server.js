@@ -2,9 +2,9 @@ const http       = require('http'),
       express    = require('express'),
       bodyParser = require('body-parser'),
       session    = require('express-session'),
-	    path       = require('path'),
+	path       = require('path'),
       httpErrors = require('httperrors');
-	    PORT_NUM   = '3000';
+	PORT_NUM   = '3000';
       app        = express();
 
 // Get our API routes -- This connects into back end Logic // 

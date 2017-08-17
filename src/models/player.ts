@@ -230,12 +230,12 @@ export class Player {
                     stat: 'age',
                     value: this.age
                 }],
-
-                charDetails: [{
-                    title: 'Treasure and Inventory',
+                treasureInventory: [{
+                    title: 'Inventory and Treasure',
                     stat: 'treasureInventory',
                     value: this.treasureInventory
-                }, {
+                }],
+                charDetails: [{
                     title: 'Features and Traits',
                     stat: 'featuresTraits',
                     value: this.featuresTraits

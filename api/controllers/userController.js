@@ -69,7 +69,6 @@ module.exports = (() => {
       } else {
          loginInfo = req.body.loginForm;
       }
-      console.log(loginInfo)
       User.findOne({
         email: loginInfo.email
       }, (err, userFound) => {

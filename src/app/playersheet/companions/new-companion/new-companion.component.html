@@ -1,6 +1,9 @@
 <div class="modal is-active">
   <div [routerLink]="['../']" class="modal-background"></div>
   <div @slideLeftAnimation class="modal-card">
+    <div class="modal-card-head">
+      <p class="modal-card-title">Create Companion</p>
+    </div>
     <div class="modal-card-body">
     <form [formGroup]="companionForm">
           <div *ngFor="let f of formGuideLayout" class="field">

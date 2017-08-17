@@ -1,11 +1,20 @@
 <div class="modal is-active">
   <div [routerLink]="['../']" class="modal-background"></div>
-  <div [@slideLeftAnimation] class="modal-card">
+  <div @slideLeftAnimation class="modal-card">
     <div class="modal-card-head">
-        <p class="modal-card-title">Create Spell</p>
+      <p class="modal-card-title">Create Note</p>
+      <div class="modal-card-title field">
+            <div class="control is-expanded has-icons-left">
+              <input [(ngModel)]="keyword" (keyup.enter)="newKeyWord(keyword)" class="input is-small" placeholder="New Key Word (press enter to save)">
+               <div *ngFor="let word of keyWords"></div>
+              <span class="icon is-small is-left">
+          <i class="fa fa-align-center"></i>
+        </span>
+            </div>
+      </div>
     </div>
     <div class="modal-card-body">
-    <form [formGroup]="spellForm" (ngSubmit)="newSpell();">
+    <form [formGroup]="noteForm">
           <div class="field">
             <p class="control is-expanded has-icons-left">
               <input formControlName="title" class="input" type="text" required placeholder="Title">
@@ -16,23 +25,25 @@
           </div>
           <div class="field">
             <p class="control is-expanded has-icons-left">
-              <textarea autosize formControlName="description" class="input" type="email" placeholder="Description"></textarea>
+              <textarea autosize formControlName="content" class="input" type="email" placeholder="Content"></textarea>
               <span class="icon is-small is-left">
           <i class="fa fa-align-center"></i>
         </span>
             </p>
           </div>
     </form>
+ 
+      <p class="keywords">Keywords:</p>
+      <p class="keyword" *ngFor="let word of keyWords">{{word}}</p>
+ 
     </div>
     <div class="modal-card-foot">
-        <button (click)="newSpell()" class="is-centered button is-primary submit">
-         Add Spell
+        <button (click)="newNote()" class="is-centered button is-primary submit">
+         Write Note
     </button>
     <a [routerLink]="['../']">Cancel</a>
         <p class="formMessage">{{formMessage}}</p>
     </div>
 
 </div>
-
-
 </div>

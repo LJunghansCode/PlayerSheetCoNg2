@@ -24,11 +24,11 @@
 
   </header>
   <div class="containerForSlide">
-    <div @slideTopAnimationRev *ngIf="expanded(comp)" class="card-content">
-          <div *ngFor="let stat of formGuideLayout" class="control has-icons-right">
+    <div @slideTopAnimationRev *ngIf="expanded(comp)" class="card-content statCont">
+          <div *ngFor="let stat of formGuideLayout" class="control has-icons-right stat">
             <label class="label" for="">{{stat.placeholder}}</label>
-              <input autosize [ngClass]="ifEditing(stat)" (keyup)="maybeChanging(stat)" (blur)="registerChangeEnter(stat, player)"
-                [(ngModel)]="comp[stat.field]" class="input" type="text" placeholder="{{stat.placeholder}}">
+              <textarea autosize [ngClass]="ifEditing(stat)" (keyup)="maybeChanging(stat)" (blur)="registerChangeEnter(stat, comp, player)"
+                [(ngModel)]="comp[stat.field]" class="input" type="text" placeholder="{{stat.placeholder}}"></textarea>
               <span class="icon is-small is-right">
                       <i *ngIf="stat.editing" class="fa fa-spinner fa-spin"></i>
                       <i *ngIf="!stat.editing" class="fa fa-check"></i>

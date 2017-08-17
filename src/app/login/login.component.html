@@ -11,8 +11,8 @@
             <span class="nav-dot"></span>
         </label>
         <button type="submit">Log in</button>
-        <p class="tip">Press Tab</p>
+        <p *ngIf="!formMessage" class="tip">Press Tab</p>
+        <p *ngIf="formMessage" class="tip">{{formMessage}}</p>
         <div class="signup-button">Welcome Back! Click here to log in</div>
     </form>
-    <p class="formError">{{formMessage}}</p>
 

@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     if (!FIELD.email) {
       this.formMessage = 'Please enter an email';
     } else if (!FIELD.password) {
-      this.formMessage = 'Please enter a password!';
+      this.formMessage = 'Please enter a password';
     } else {
       this.loginService.loginUser(FIELD)
         .subscribe(

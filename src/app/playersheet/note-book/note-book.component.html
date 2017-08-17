@@ -1,3 +1,21 @@
-<p>
-  note-book works!
-</p>
+<div @slideLeftAnimation class="noteBookContainer" *ngFor="let note of notes">
+  <div class="card singleNote">
+    <div class="card-header">
+      <div class="card-header-title">
+        {{note.title}}
+      </div>
+       <div *ngIf="note.keyWords" class="card-header-title">
+        <p class="keywords">Keywords: </p> <p *ngFor="let word of note.keyWords; let i = index" class="keyword">{{word}}</p>
+      </div>
+      <div class="card-header-icon">
+        <span (click)="deleteNote(i)" class="icon"><i class="fa fa-trash"></i></span>
+      </div>
+    </div>
+    <div class="card-content">
+      <p class="note-content">
+        {{note.content}}
+      </p>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

@@ -34,6 +34,7 @@ import { NoteBookComponent } from './playersheet/note-book/note-book.component';
 import { PlayerSettingsComponent } from './playersheet/player-settings/player-settings.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { NewCompanionComponent } from './playersheet/companions/new-companion/new-companion.component';
+import { NewNoteComponent } from './playersheet/note-book/new-note/new-note.component';
 
 
 const routes: Routes = [
@@ -54,7 +55,10 @@ const routes: Routes = [
           children: [
             {path: 'new', component: NewCompanionComponent},
           ] },
-        {path: 'notes', component: NoteBookComponent },
+        {path: 'notes', component: NoteBookComponent,
+          children: [
+            {path: 'new', component: NewNoteComponent},
+          ] },
         {path: 'settings', component: PlayerSettingsComponent },
         {path: 'spells', component: PlayerSpellsComponent,
           children: [
@@ -91,6 +95,7 @@ const routes: Routes = [
     PlayerSettingsComponent,
     AboutPageComponent,
     NewCompanionComponent,
+    NewNoteComponent,
   ],
   imports: [
     BrowserModule,

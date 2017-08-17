@@ -15,6 +15,21 @@ saveAllChanges(player) {
 
   }
 }
+companionUpdate(stat, companion, player ) {
+  if (stat.value === companion[stat.field]) {
+    stat.editing = false;
+  } else {
+    stat.editing = true;
+    // Store 'this' to use in timeout
+    const This = this;
+    stat.waiting = setTimeout(function(){
+      companion[stat.field] = stat.value;
+      This.playerService.updateCurrentPlayer(player);
+      stat.editing = false;
+    }, 2000);
+    stat.value = companion[stat.field];
+  }
+}
 fieldChangedCallDbAfterWait(stat, player) {
   if (stat.value === player[stat.stat]) {
     stat.editing = false;
@@ -41,7 +56,6 @@ editCssToggle(stat) {
         }
 }
 currentlyChanging(stat) {
-
     stat.editing = true;
     clearTimeout(stat.waiting);
   }

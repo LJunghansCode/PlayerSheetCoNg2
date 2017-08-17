@@ -53,10 +53,10 @@ export class CompanionsComponent implements OnInit {
       );
   }
   expanded(comp) {
-    if (comp.expandedTrigger) {
-      return true;
-    } else {
+    if (!comp.expandedTrigger || comp.expandedTrigger === undefined) {
       return false;
+    } else {
+      return true;
     }
   }
   expand(comp) {
@@ -77,8 +77,8 @@ export class CompanionsComponent implements OnInit {
     this.formService.currentlyChanging(stat);
   }
 
-  registerChangeEnter(stat, player) {
-    this.formService.fieldChangedCallDbAfterWait(stat, player);
+  registerChangeEnter(stat, companion, player) {
+    this.formService.companionUpdate(stat, companion, player);
   }
   ifEditing(stat) {
     return this.formService.editCssToggle(stat);

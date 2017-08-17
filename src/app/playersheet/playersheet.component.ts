@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { PlayerService } from './../player.service';
+import { LoginService } from './../login.service';
 import { Player } from './../../models/player';
+import { User } from './../../models/user';
 import 'rxjs/add/operator/switchMap';
 import { slideTopAnimation } from './../_animations/slideTopAnim';
 import { fadeInAnimation } from './../_animations/fadeAnim';
@@ -13,26 +15,35 @@ import { fadeInAnimation } from './../_animations/fadeAnim';
   styleUrls: ['./playersheet.component.sass'],
   animations: [slideTopAnimation, fadeInAnimation]
 })
-export class PlayersheetComponent implements OnInit {
+export class PlayersheetComponent implements OnInit{
   private routeSub: any;
   player: Player;
+  user: User;
   id: number;
   currPartial: string;
   slots: any;
   masterStat: any;
   routeMap = [
-      {'name': 'info', 'title': 'General Information', 'active': false},
-      {'name': 'spells', 'title': 'Spell Details', 'active': false},
-      {'name': 'details', 'title': 'Inventory and Equipment', 'active': false},
-      {'name': 'companions', 'title': 'Companions', 'active': false},
-      {'name': 'notes', 'title': 'Note Book', 'active': false},
-      {'name': 'settings', 'title': 'Settings', 'active': false}
+      {'name': 'info', 'title': 'General Information', 'active': false, 'icon': 'address-card'},
+      {'name': 'spells', 'title': 'Spell Details', 'active': false, 'icon': 'bolt'},
+      {'name': 'details', 'title': 'Inventory and Details', 'active': false, 'icon': 'bars'},
+      {'name': 'companions', 'title': 'Companions', 'active': false, 'icon': 'paw'},
+      {'name': 'notes', 'title': 'Note Book', 'active': false, 'icon': 'sticky-note'},
+      {'name': 'settings', 'title': 'Settings', 'active': false, 'icon': 'cogs'}
     ];
 
   constructor(  private playerService: PlayerService,
-  private route: ActivatedRoute,
-  private location: Location) { }
+  private route: ActivatedRoute, private router: Router,
+  private location: Location, private loginService: LoginService) { }
   ngOnInit() {
+  this.loginService._currentUser
+    .subscribe(
+      (user) => {
+        if (user) {
+          this.user = user.user;
+        }
+      }
+    );
    this.route.params.subscribe(params => {
      this.id = params['id'];
      this.playerService.getPlayerById(this.id);
@@ -49,6 +60,7 @@ export class PlayersheetComponent implements OnInit {
       });
    });
   }
+  
   getRoute(route) {
     return route.name;
   }
@@ -64,7 +76,7 @@ export class PlayersheetComponent implements OnInit {
     }
     const final = endString.split('').reverse().join('');
     if (final === route.name) {
-      this.currPartial = route.title;
+      this.currPartial = route;
       return 'is-active';
     } else {
       return '';

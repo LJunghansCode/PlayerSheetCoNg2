@@ -1,3 +1,23 @@
+<div @slideTopAnimation class="section">
+    <div class="control has-icons-right">
+      <div class="card" *ngFor="let stat of inventory">
+        <div class="card-header">
+          <p class="card-header-title"> {{stat.title}} </p>
+          <span class="card-header-icon"><i class="fa fa-archive"></i></span>
+       </div>
+       <div class="card-content">
+          <div class="control has-icons-right">
+            <textarea autosize [ngClass]="ifEditing(stat)" (keyup)="maybeChanging(stat)" (blur)="registerChangeEnter(stat, player)" (keyup.enter)="registerChangeEnter(stat, player)"
+              [(ngModel)]="player[stat.stat]" class="textarea" type="text" placeholder="{{stat.title}}"></textarea>
+            <span class="icon is-small is-right">
+                    <i *ngIf="stat.editing" class="fa fa-spinner fa-spin"></i>
+                    <i *ngIf="!stat.editing" class="fa fa-check"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
   <div class="statContainer column" [dragula]='"details-bag"' [dragulaModel]='deatails'  [@slideLeftAnimation] *ngIf='player'>
       <div class="box" *ngFor="let stat of details">
        <strong>  <label for=""> {{stat.title}}</label> </strong>

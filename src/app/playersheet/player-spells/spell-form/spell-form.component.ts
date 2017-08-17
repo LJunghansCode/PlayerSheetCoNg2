@@ -6,6 +6,7 @@ import { PlayerService } from './../../../player.service';
 import { FormService } from './../../../form.service';
 import { Player } from './../../../../models/player';
 import { Spell } from './../../../../models/spell';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-spell-form',
@@ -22,7 +23,7 @@ export class SpellFormComponent implements OnInit {
     });
 
   spellList: any;
-  constructor(private playerService: PlayerService, private formService: FormService, private fb: FormBuilder) { }
+  constructor(private playerService: PlayerService, private formService: FormService, private fb: FormBuilder, private route: Router) { }
 
   ngOnInit() {
     this.playerService._playerSingle
@@ -40,7 +41,8 @@ export class SpellFormComponent implements OnInit {
       const spell = new Spell(FIELD.title, FIELD.description);
       this.player.spellList.push(spell);
       this.spellForm.reset();
-      this.playerService.updateCurrentPlayer(this.player)
+      this.playerService.updateCurrentPlayer(this.player);
+      this.route.navigateByUrl(`/player/${this.player.id}/spells`);
     }
 
    ;

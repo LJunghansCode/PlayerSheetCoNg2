@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PlayerService } from './../../player.service';
 import { FormService } from './../../form.service';
 import { Player } from './../../../models/player';
-import { slideInOutAnimation } from './../../_animations/slideAnim';
+import { slideTopAnimation } from './../../_animations/slideTopAnim';
 import { slideLeftAnimation } from './../../_animations/slideBotAnim';
 
 
@@ -10,22 +10,24 @@ import { slideLeftAnimation } from './../../_animations/slideBotAnim';
   selector: 'app-player-details',
   templateUrl: './player-details.component.html',
   styleUrls: ['./player-details.component.sass'],
-  animations: [slideInOutAnimation, slideLeftAnimation ],
+  animations: [slideTopAnimation, slideLeftAnimation ],
 })
 export class PlayerDetailsComponent implements OnInit {
   player: Player;
   details: any[];
+  inventory: any;
 
   constructor(private playerService: PlayerService, private formService: FormService) { }
 
   ngOnInit() {
-        this.playerService._playerSingle
+    this.playerService._playerSingle
       .subscribe(
-      (player) => {
-        if (player) {
-          this.player = player;
-          this.details = player.masterStats.charDetails;
-        }
+         (player) => {
+          if (player) {
+            this.player = player;
+            this.details = player.masterStats.charDetails;
+            this.inventory = player.masterStats.treasureInventory;
+          }
       }, (error) => {
         console.error(error);
       },

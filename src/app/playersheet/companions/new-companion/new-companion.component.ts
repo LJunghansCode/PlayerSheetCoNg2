@@ -4,6 +4,7 @@ import { slideLeftAnimation } from './../../../_animations/slideBotAnim';
 import { Player } from './../../../../models/player';
 import { Companion } from './../../../../models/companion';
 import { PlayerService} from './../../../player.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-companion',
@@ -55,7 +56,7 @@ export class NewCompanionComponent implements OnInit {
     passivePerception: ['', Validators.required],
     description: ['', Validators.required]
   });
-  constructor(private fb: FormBuilder, private playerService: PlayerService) { }
+  constructor(private fb: FormBuilder, private playerService: PlayerService, private route: Router) { }
 
   ngOnInit() {
     this.playerService._playerSingle
@@ -72,5 +73,6 @@ export class NewCompanionComponent implements OnInit {
     this.player.companions.push(companion);
     this.companionForm.reset();
     this.playerService.updateCurrentPlayer(this.player);
+    this.route.navigateByUrl(`/player/${this.player.id}/companions`);
   }
 }

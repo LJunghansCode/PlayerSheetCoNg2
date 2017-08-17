@@ -3,19 +3,19 @@
     <aside class="player-side-nav menu">
       <p *ngIf="player"class="menu-label">{{player.name}} the {{player.classType}}</p>
       <ul class="menu-list">
-        <li class="nav-item" *ngFor="let route of routeMap"> <a [ngClass]="ifActive(route)" [routerLink]="[getRoute(route)]">{{route.title}}</a> </li>
+        <li class="nav-item" *ngFor="let route of routeMap"> <a [ngClass]="ifActive(route)" [routerLink]="[getRoute(route)]"><span class="menu-icon icon is-small is-left"><i class="fa fa-{{route.icon}}"></i></span> {{route.title}}</a></li>
       </ul>
     </aside>
   </section>
-  <section class="column">
+  <div class="column is-10">
     <div *ngIf="!player">
       <h1>Looking for player...</h1>
     </div>
     <div @slideTopAnimation *ngIf="player">
-      <section class="hero is-primary sheetHero">
+      <div class="hero is-primary sheetHero">
           <div class="hero-body">
-            <div class="container">
-             <p @fadeInAnimation class="title is-1"> {{currPartial}} </p>
+            <div class="container" *ngIf="currPartial">
+             <p @fadeInAnimation class="title is-1"> {{currPartial.title}} </p>
             </div>
           </div> 
         <div class="hero-foot">
@@ -24,14 +24,21 @@
               <ul>
                 <li [routerLink]="[ 'spells/new' ]"><a>New Spell</a></li>
                 <li [routerLink]="[ 'companions/new' ]"><a>New Companion</a></li>
-                <li [routerLink]="[ 'notes/new' ]"><a>Quick Note</a></li>
-                <li> <input class="input" type="text" placeholder="search"></li>
+                <li [routerLink]="[ 'notes/new' ]"><a>New Note</a></li>
+                <li>
+                  <div class="control has-icons-right">
+                    <input class="input mainSearch" type="text" placeholder="Search {{currPartial.name}}">
+                    <span class="icon is-small is-right"><i class="fa fa-search"></i></span>
+                  </div>
+                </li>
               </ul>
             </div>
           </nav>
         </div>
-</section>
-     <router-outlet ></router-outlet>
     </div>
-  </section>
+    <div class="section">
+     <router-outlet></router-outlet>
+    </div> 
+  </div>
+  </div>
 </main>
