@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { LoginService } from './../login.service';
-import { UiGlobalService } from './../ui-global.service';
+import { LoginService } from './../services/login/login.service';
+import { UiGlobalService } from './../services/ui/ui-global.service';
 import { RouterModule, Routes, Router } from '@angular/router';
 
 @Component({

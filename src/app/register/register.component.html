@@ -1,8 +1,14 @@
 <div class="modal is-active">
 <div [@fadeInAnimation] [routerLink]="['../']" class="modal-background"></div>
 <div [@slideLeftAnimation] class="modal-card">
+  <div class="modal-card-head">
+    <div class="modal-card-title">
+      Thanks for joining, register below!
+    </div>
+    <div [routerLink]="['../']" class="modal-close"></div>
+  </div>
   <div class="modal-card-body">
-    <form id="registerForm" [formGroup]="registerForm" (ngSubmit)="registerNew($event);">
+    <form id="registerForm" [formGroup]="registerForm" (ngSubmit)="registerNew();">
       <div class="top field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">User Name</label>
@@ -55,12 +61,14 @@
           </div>
         </div>
       </div>
+      <div>
     <button class="registerButton has-text-centered button is-primary submit">
          Register!
     </button>
+    </div>
     </form>
   </div>
-  <div class=" card-footer">
+  <div class="modal-card-foot">
     <div class="card-footer-item">
       <p class="formError">{{formMessage}}</p>
     </div>

@@ -1,3 +1,7 @@
+<div class="control noteSearch has-icons-right">
+  <input [(ngModel)]="filter" class="input" type="text" placeholder="Search details">
+  <span class="icon is-small is-right"><i class="fa fa-search"></i></span>
+</div>
 <div @slideTopAnimation class="section">
     <div class="control has-icons-right">
       <div class="card" *ngFor="let stat of inventory">
@@ -18,7 +22,7 @@
       </div>
     </div>
 </div>
-  <div class="statContainer column" [dragula]='"details-bag"' [dragulaModel]='deatails'  [@slideLeftAnimation] *ngIf='player'>
+  <div class="statContainer column" [dragula]='"details-bag"' [dragulaModel]='details'  [@slideLeftAnimation] *ngIf='player'>
       <div class="box" *ngFor="let stat of details">
        <strong>  <label for=""> {{stat.title}}</label> </strong>
         <div class="control has-icons-right">

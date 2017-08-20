@@ -1,6 +1,10 @@
+<div class="control has-icons-right mainSearch">
+  <input [(ngModel)]="filter" class="input " type="text" placeholder="Search Information">
+  <span class="icon is-small is-right"><i class="fa fa-search"></i></span>
+</div>
 <main class="columns">
   <div class="statContainer column" [dragula]='"info-bag"' [dragulaModel]='basicInfo' @slideLeftAnimation *ngIf='player'>
-    <div class="box" *ngFor="let stat of basicInfo">
+    <div class="box" *ngFor="let stat of basicInfo | search : filter">
         <article class="singleStat">
          <strong> <label for=""> {{stat.title}}</label> </strong>
           <div class="control has-icons-right">

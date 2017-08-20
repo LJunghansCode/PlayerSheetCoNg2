@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PlayerService } from './../../../player.service';
+import { PlayerService } from './../../../services/player/player.service';
 import { Player } from './../../../../models/player';
 import { slideInOutAnimation } from './../../../_animations/slideAnim';
 import { fadeInAnimation } from './../../../_animations/fadeAnim';

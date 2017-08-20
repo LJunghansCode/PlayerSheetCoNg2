@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { slideInOutAnimation } from './../../_animations/slideAnim';
 import { slideLeftAnimation } from './../../_animations/slideBotAnim';
-import { PlayerService } from './../../player.service';
-import { FormService } from './../../form.service';
+import { PlayerService } from './../../services/player/player.service';
+import { FormService } from './../../services/form/form.service';
 import { Player } from './../../../models/player';
 import { Spell } from './../../../models/spell';
 
@@ -16,6 +16,7 @@ export class PlayerSpellsComponent implements OnInit {
     player: Player;
     spellList: Spell[];
     addingNew: boolean;
+    filter: string;
 
   constructor(private playerService: PlayerService, private formService: FormService) { }
 

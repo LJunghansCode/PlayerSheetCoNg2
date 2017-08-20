@@ -3,7 +3,7 @@ import { Headers, Http, Response, RequestOptions } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Player } from './../models/player';
+import { Player } from './../../../models/player';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
@@ -33,6 +33,10 @@ export class PlayerService {
     this.updatePlayerById(player);
   }
   updatePlayerById(player) {
+  if (player.id === 12345) {
+    return;
+  }
+    console.log('called myapi')
     this.http.post(this.updateUrl, {player}, this.options).subscribe(
       (res) => {
         const updated = this.instantiatePlayerFromDatabase(res);
@@ -57,6 +61,11 @@ export class PlayerService {
         },
         () => {}
       );
+  }
+  createExamplePlayer() {
+    // tslint:disable-next-line:max-line-length
+    const blankPlayer = new Player(12345, 'accountEmail', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', [], '', '', '', '', '', '', '', '', [ ], '', '', '', '', '', '', '', '', '', '', '', '', '', [ ], [ ], '');
+    this.singlePlayerSource.next(blankPlayer);
   }
   getPlayersForUser() {
     this.http.get(this.getPlayersUrl, this.options)

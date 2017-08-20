@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { slideLeftAnimation } from './../../../_animations/slideBotAnim';
 import { Player } from './../../../../models/player';
 import { Companion } from './../../../../models/companion';
-import { PlayerService} from './../../../player.service';
+import { PlayerService} from './../../../services/player/player.service';
 import { Router } from '@angular/router';
 
 @Component({

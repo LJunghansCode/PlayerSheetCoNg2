@@ -5,7 +5,7 @@
       <p class="modal-card-title">Create Note</p>
       <div class="modal-card-title field">
             <div class="control is-expanded has-icons-left">
-              <input [(ngModel)]="keyword" (keyup.enter)="newKeyWord(keyword)" class="input is-small" placeholder="New Key Word (press enter to save)">
+              <input [(ngModel)]="keyword" (blur)="newKeyWord(keyword)" (keyup.enter)="newKeyWord(keyword)" class="input is-small" placeholder="New Key Word (press enter to save)">
                <div *ngFor="let word of keyWords"></div>
               <span class="icon is-small is-left">
           <i class="fa fa-align-center"></i>
@@ -34,7 +34,7 @@
     </form>
  
       <p class="keywords">Keywords:</p>
-      <p class="keyword" *ngFor="let word of keyWords">{{word}}</p>
+      <p class="keyword" *ngFor="let word of keyWords">{{word}} </p>
  
     </div>
     <div class="modal-card-foot">

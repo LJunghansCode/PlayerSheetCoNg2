@@ -1,7 +1,8 @@
 <main @slideTopAnimation class="columns">
   <section class="column is-2">
     <aside class="player-side-nav menu">
-      <p *ngIf="player"class="menu-label">{{player.name}} the {{player.classType}}</p>
+      <p *ngIf="player.name && player.classType"class="menu-label">{{player.name}} the {{player.classType}}</p>
+      <p *ngIf="!player.name || !player.classType"class="menu-label">Your new player!</p>
       <ul class="menu-list">
         <li class="nav-item" *ngFor="let route of routeMap"> <a [ngClass]="ifActive(route)" [routerLink]="[getRoute(route)]"><span class="menu-icon icon is-small is-left"><i class="fa fa-{{route.icon}}"></i></span> {{route.title}}</a></li>
       </ul>
@@ -10,6 +11,12 @@
   <div class="column is-10">
     <div *ngIf="!player">
       <h1>Looking for player...</h1>
+    </div>
+    <div @fadeInAnimation class="exampleNot" *ngIf="exampleSheetToggle">
+      <div class="notification">
+      <button class="delete"></button>
+        Reminder! This is an example sheet! Your information will not be saved until you create an account!
+    </div>
     </div>
     <div @slideTopAnimation *ngIf="player">
       <div class="hero is-primary sheetHero">
@@ -25,12 +32,6 @@
                 <li [routerLink]="[ 'spells/new' ]"><a>New Spell</a></li>
                 <li [routerLink]="[ 'companions/new' ]"><a>New Companion</a></li>
                 <li [routerLink]="[ 'notes/new' ]"><a>New Note</a></li>
-                <li>
-                  <div class="control has-icons-right">
-                    <input class="input mainSearch" type="text" placeholder="Search {{currPartial.name}}">
-                    <span class="icon is-small is-right"><i class="fa fa-search"></i></span>
-                  </div>
-                </li>
               </ul>
             </div>
           </nav>

@@ -8,10 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DragulaModule } from 'ng2-dragula';
 
 
-import { LoginService } from './login.service';
-import { PlayerService } from './player.service';
-import { UiGlobalService } from './ui-global.service';
-import {FormService } from './form.service';
+import { LoginService } from './services/login/login.service';
+import { PlayerService } from './services/player/player.service';
+import { UiGlobalService } from './services/ui/ui-global.service';
+import {FormService } from './services/form/form.service';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PlayersheetComponent } from './playersheet/playersheet.component';
@@ -35,6 +35,8 @@ import { PlayerSettingsComponent } from './playersheet/player-settings/player-se
 import { AboutPageComponent } from './about-page/about-page.component';
 import { NewCompanionComponent } from './playersheet/companions/new-companion/new-companion.component';
 import { NewNoteComponent } from './playersheet/note-book/new-note/new-note.component';
+import { NoteFilterPipe } from './pipes/search/filter.pipe';
+import { CompanionFilterPipe } from './pipes/companion/companion-filter.pipe';
 
 
 const routes: Routes = [
@@ -96,6 +98,8 @@ const routes: Routes = [
     AboutPageComponent,
     NewCompanionComponent,
     NewNoteComponent,
+    NoteFilterPipe,
+    CompanionFilterPipe,
   ],
   imports: [
     BrowserModule,

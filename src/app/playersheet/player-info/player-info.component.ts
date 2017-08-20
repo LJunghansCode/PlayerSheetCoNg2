@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerService } from './../../player.service';
-import { FormService } from './../../form.service';
+import { PlayerService } from './../../services/player/player.service';
+import { FormService } from './../../services/form/form.service';
 import { Player } from './../../../models/player';
 import { slideLeftAnimation } from './../../_animations/slideBotAnim';
 
@@ -15,6 +15,7 @@ export class PlayerInfoComponent implements OnInit {
   player: Player;
   basicInfo: any[];
   details: any[];
+  filter: string;
   constructor(private playerService: PlayerService, private formService: FormService) { }
 
   ngOnInit() {

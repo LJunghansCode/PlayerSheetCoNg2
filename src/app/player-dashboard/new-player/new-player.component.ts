@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { PlayerService } from './../../player.service';
+import { PlayerService } from './../../services/player/player.service';
 import { Router } from '@angular/router';
 import { slideLeftAnimation } from './../../_animations/slideBotAnim';
 import { fadeInAnimation } from './../../_animations/fadeAnim';

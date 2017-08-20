@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PlayerService } from './player.service';
+import { PlayerService } from './../player/player.service';
 
 @Injectable()
 export class UiGlobalService {

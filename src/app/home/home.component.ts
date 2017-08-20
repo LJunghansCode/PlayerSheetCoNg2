@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UiGlobalService } from './../ui-global.service';
+import { UiGlobalService } from './../services/ui/ui-global.service';
 import { slideRightAnimation} from './../_animations/slideRightAnim';
 import { slideTopAnimation } from './../_animations/slideTopAnim';
 

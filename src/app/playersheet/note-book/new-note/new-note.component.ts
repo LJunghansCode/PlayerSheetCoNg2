@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PlayerService } from './../../../player.service';
+import { PlayerService } from './../../../services/player/player.service';
 import { slideLeftAnimation } from './../../../_animations/slideBotAnim';
-import { FormService } from './../../../form.service';
+import { FormService } from './../../../services/form/form.service';
 import { Player } from './../../../../models/player';
 import { Note } from './../../../../models/note';
 

@@ -1,6 +1,10 @@
+<div class="control has-icons-right mainSearch">
+  <input [(ngModel)]="filter" class="input" type="text" placeholder="Search Spells">
+  <span class="icon is-small is-right"><i class="fa fa-search"></i></span>
+</div>
 <article class="columns section">
 <div class="spellsContainer column" [dragulaModel]='spellList' [dragula]="'spell-bag'">
-  <article @slideLeftAnimation class="spell-tome" *ngFor="let spell of spellList; let i = index" >
+  <article @slideLeftAnimation class="spell-tome" *ngFor="let spell of spellList | search: filter; let i = index" >
    <div class="spellSingle card">
      <div class="card-header">
        <div class="card-header-title">

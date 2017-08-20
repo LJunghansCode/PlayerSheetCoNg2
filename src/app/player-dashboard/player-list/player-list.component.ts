@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from './../../../models/player';
 import { Observable } from 'rxjs/Observable';
-import { PlayerService } from './../../player.service';
-import { LoginService } from './../../login.service';
+import { PlayerService } from './../../services/player/player.service';
+import { LoginService } from './../../services/login/login.service';
 import { PlayerCardComponent } from './player-card/player-card.component';
 import { fadeInAnimation } from './../../_animations/fadeAnim';
 import { slideLeftAnimation } from './../../_animations/slideBotAnim';

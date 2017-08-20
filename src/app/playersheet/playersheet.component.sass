@@ -4,20 +4,17 @@
 .sheetPartial
     display: flex
 .nav-item
-    margin-top: 1vh
+    margin-top: 6vh
     border-radius: 30px
     transition: all .5s
-    opacity: .9
     &:hover
         transition: .3s
+.nav-item a:not(.button).is-active
+    color: white
 .is-active
-    background-color: red
     transition: all 1s
     opacity: 1
     border-radius: 10px
-
-.is-active a
-    color: white
 .player-side-nav
     text-align: center
 .sheetHero
@@ -27,3 +24,6 @@
     border-radius: 4px 
 .section
     overflow: hidden
+.exampleNot
+    width: 50%
+    margin: 0 auto

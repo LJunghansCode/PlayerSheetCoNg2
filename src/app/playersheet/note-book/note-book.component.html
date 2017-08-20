@@ -1,10 +1,14 @@
-<div @slideLeftAnimation class="noteBookContainer" *ngFor="let note of notes">
-  <div class="card singleNote">
+<div class="control noteSearch has-icons-right">
+  <input [(ngModel)]="filter" class="input" type="text" placeholder="Search all your notes">
+  <span class="icon is-small is-right"><i class="fa fa-search"></i></span>
+</div>
+<div @slideLeftAnimation class="noteBookContainer">
+  <div  *ngFor="let note of notes | search : filter; let i = index" class="card singleNote">
     <div class="card-header">
       <div class="card-header-title">
         {{note.title}}
       </div>
-       <div *ngIf="note.keyWords" class="card-header-title">
+       <div *ngIf="note.keyWords" class="card-header-title keywordsContainer">
         <p class="keywords">Keywords: </p> <p *ngFor="let word of note.keyWords; let i = index" class="keyword">{{word}}</p>
       </div>
       <div class="card-header-icon">
@@ -17,5 +21,8 @@
       </p>
     </div>
   </div>
+</div>
+<div *ngIf="notes.length === 0">
+  <a [routerLink]="['new']">Write Some Notes!</a>
 </div>
 <router-outlet></router-outlet>

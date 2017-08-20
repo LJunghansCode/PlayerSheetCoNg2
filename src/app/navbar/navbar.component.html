@@ -1,16 +1,18 @@
-<nav [@fadeInAnimation] class="navbar is-transparent">
+<nav [@fadeInAnimation] class="navbar">
   <div class="navbar-brand">
     <a class="navbar-item" href="/home">
-      <img src="./../../assets/swordsVG.svg"  width="112" height="28">
-      <img src="./../../assets/PlayerSheetCo1.svg"  width="112" height="28">
+      <img class="svg" src="./../../assets/swordsVG.svg"  width="112" height="28">
+      <img class="svg" src="./../../assets/PlayerSheetCo1.svg"  width="112" height="28">
     </a>
-  </div>   
+  </div> 
+  <div class="navbar-divider"></div>
+  <div class="nav-left">
+     <p class="navbar-item" *ngIf="ifPlayer()"><span class="icon is-medium"><i class="fa fa-hand-spock-o"></i></span>Welcome Back, {{userDetails.userName}}</p>
+  </div>  
     <div class="nav-right">
       <!-- NO PLAYER-->
       <a class="navbar-item" *ngIf="!ifPlayer()" (click)="toggleModalLog()"><span class="icon is-medium"><i class="fa fa-sign-in"></i></span>Log In </a>
       <!-- PLAYER LOGGED IN-->
-
-       <p class="navbar-item" *ngIf="ifPlayer()"><span class="icon is-medium"><i class="fa fa-hand-spock-o"></i></span>Welcome Back, {{userDetails.userName}}</p>
        <a class="navbar-item" *ngIf="ifPlayer()" href="/player-dashboard"><span class="icon is-medium"><i class="fa fa-users"></i></span>Dashboard</a>
        <a class="navbar-item" *ngIf="ifPlayer()" (click)="logOutCurrent()"><span class="icon is-medium"><i class="fa fa-sign-out"></i></span>Log Out</a>
        <!-- ALWAYS -->

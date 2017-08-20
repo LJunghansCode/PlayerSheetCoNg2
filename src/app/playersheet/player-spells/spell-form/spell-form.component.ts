@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { slideFullAnimation } from './../../../_animations/fullSlide';
 import { slideLeftAnimation } from './../../../_animations/slideBotAnim';
-import { PlayerService } from './../../../player.service';
-import { FormService } from './../../../form.service';
+import { PlayerService } from './../../../services/player/player.service';
+import { FormService } from './../../../services/form/form.service';
 import { Player } from './../../../../models/player';
 import { Spell } from './../../../../models/spell';
 import { Router } from '@angular/router'

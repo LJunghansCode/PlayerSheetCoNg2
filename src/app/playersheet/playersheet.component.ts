@@ -1,8 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { PlayerService } from './../player.service';
-import { LoginService } from './../login.service';
+import { PlayerService } from './../services/player/player.service';
+import { LoginService } from './../services/login/login.service';
 import { Player } from './../../models/player';
 import { User } from './../../models/user';
 import 'rxjs/add/operator/switchMap';
@@ -17,6 +17,7 @@ import { fadeInAnimation } from './../_animations/fadeAnim';
 })
 export class PlayersheetComponent implements OnInit{
   private routeSub: any;
+  exampleSheetToggle: boolean;
   player: Player;
   user: User;
   id: number;
@@ -46,7 +47,13 @@ export class PlayersheetComponent implements OnInit{
     );
    this.route.params.subscribe(params => {
      this.id = params['id'];
-     this.playerService.getPlayerById(this.id);
+     // Make sure this isn't example
+     if (this.id.toString() === '12345' ) {
+        this.exampleSheetToggle = true;
+        this.playerService.createExamplePlayer();
+     }else {
+       this.playerService.getPlayerById(this.id);
+     }
      this.playerService._playerSingle
       .subscribe((player) => {
         if (!this.player && player) {
@@ -60,7 +67,6 @@ export class PlayersheetComponent implements OnInit{
       });
    });
   }
-  
   getRoute(route) {
     return route.name;
   }
