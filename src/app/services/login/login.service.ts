@@ -23,6 +23,7 @@ export class LoginService {
   public _currentUser: Observable<any> = this.currentUserSource.asObservable();
 
   public updateUser(user) {
+    console.log(user)
     this.currentUserSource.next(user);
   }
 

@@ -1,10 +1,10 @@
-<main @slideTopAnimation class="columns">
+<main *ngIf="player" @slideTopAnimation class="columns">
   <section class="column is-2">
     <aside class="player-side-nav menu">
       <p *ngIf="player.name && player.classType"class="menu-label">{{player.name}} the {{player.classType}}</p>
       <p *ngIf="!player.name || !player.classType"class="menu-label">Your new player!</p>
       <ul class="menu-list">
-        <li class="nav-item" *ngFor="let route of routeMap"> <a [ngClass]="ifActive(route)" [routerLink]="[getRoute(route)]"><span class="menu-icon icon is-small is-left"><i class="fa fa-{{route.icon}}"></i></span> {{route.title}}</a></li>
+        <li class="nav-item" *ngFor="let route of routeMap"> <a [routerLink]="[getRoute(route)]" routerLinkActive="is-active" ><span class="menu-icon icon is-small is-left"><i class="fa fa-{{route.icon}}"></i></span> {{route.title}}</a></li>
       </ul>
     </aside>
   </section>
@@ -12,14 +12,14 @@
     <div *ngIf="!player">
       <h1>Looking for player...</h1>
     </div>
-    <div @fadeInAnimation class="exampleNot" *ngIf="exampleSheetToggle">
+    <div [ngClass]="getNotification()"  @fadeInAnimation class="exampleNot" *ngIf="exampleSheetToggle">
       <div class="notification">
-      <button class="delete"></button>
+      <button (click)="toggleNot()" class="delete"></button>
         Reminder! This is an example sheet! Your information will not be saved until you create an account!
     </div>
     </div>
     <div @slideTopAnimation *ngIf="player">
-      <div class="hero is-primary sheetHero">
+      <div class="hero is-info sheetHero">
           <div class="hero-body">
             <div class="container" *ngIf="currPartial">
              <p @fadeInAnimation class="title is-1"> {{currPartial.title}} </p>
@@ -29,9 +29,9 @@
           <nav class="tabs is-right">
             <div class="container">
               <ul>
-                <li [routerLink]="[ 'spells/new' ]"><a>New Spell</a></li>
-                <li [routerLink]="[ 'companions/new' ]"><a>New Companion</a></li>
-                <li [routerLink]="[ 'notes/new' ]"><a>New Note</a></li>
+                <li><a [routerLink]="[ 'spells/new' ]" >New Spell</a></li>
+                <li><a [routerLink]="[ 'companions/new' ]" routerLinkActive="is-active">New Companion</a></li>
+                <li><a [routerLink]="[ 'notes/new' ]" routerLinkActive="is-active">New Note</a></li>
               </ul>
             </div>
           </nav>

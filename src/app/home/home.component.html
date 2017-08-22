@@ -1,34 +1,47 @@
 <main [@slideRightAnimation] class="homeContainer hero has-text-centered">
   <div class="hero-body">
     <p class="welcomeTitle">Welcome to Player Sheet Co.</p>
+    <img class="svg" src="./../../assets/swordsVG.svg" width="15%">
     <p class="mainTitle">  Managing your alter egos can be hard...</p>
     <p class="subTitle">Introducing a simple solution for keeping track of your characters.</p>
   </div>
 </main>
-<div class="section">
+
   <section [@slideTopAnimation] class="hero jumpButtonContainer">
     <div class="hero-body">
-      <div class="has-text-centered">
-          <button class="button jumpButton" [routerLink]="['/player/12345']"><p class="btnText">Try the editor</p><span class=" btnIcon icon is-large">
+      <div *ngIf="!user" class="has-text-centered">
+          <a class="button jumpButton" [routerLink]="['/player/12345']">
+            <span>Try the editor</span>
+            <span class="icon is-medium btnIcon">
               <i class="fa fa-angle-double-right"></i>
-          </span></button>
+            </span>
+          </a>
+      </div>
+      <div *ngIf="user" class="has-text-centered">
+          <a class="button jumpButton" [routerLink]="['/player-dashboard']">
+            <span>Edit one of your players</span>
+            <span class="icon is-medium btnIcon">
+              <i class="fa fa-angle-double-right"></i>
+            </span>
+          </a>
       </div>
     </div>
   </section>  
-</div>
-<app-info-columns></app-info-columns>
 <div class="section">
-  <section [@slideTopAnimation] class="hero createButtonContainer">
+  <app-info-columns></app-info-columns>
+</div>
+  <section *ngIf="!user" [@slideTopAnimation] class="hero createButtonContainer">
     <div class="hero-body">
       <div class="has-text-centered">
-          <button class="button createButton" [routerLink]="['register']"><p class="btnText">Register Now</p><span class=" btnIcon icon is-large">
+          <a class="button createButton" [routerLink]="['register']">
+            <span>Register Now</span>
+            <span class="icon is-medium btnIcon">
               <i class="fa fa-angle-double-right"></i>
-          </span></button>
+            </span>
+          </a>
       </div>
     </div>
   </section>
-</div>
-
   <div>
       <router-outlet></router-outlet>
   </div>

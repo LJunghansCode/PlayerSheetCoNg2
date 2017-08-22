@@ -3,12 +3,13 @@ import { PlayerService } from './../player/player.service';
 
 @Injectable()
 export class UiGlobalService {
-  registerModal: boolean;
-  loginModal: boolean;
 
   // Trigger true on success and infer Ui toggling from these booleans
   regFormStatus: boolean;
   logFormSucc: boolean;
+  registerModal: boolean;
+  loginModal: boolean;
+  exampleNotIfication: boolean;
 
   waiting: any;
 
@@ -62,6 +63,21 @@ export class UiGlobalService {
   }
   triggerRegFailure() {
     this.regFormStatus = false;
+  }
+  toggleExampleNotification() {
+    if (this.exampleNotIfication === false || this.exampleNotIfication === undefined) {
+      this.exampleNotIfication = true;
+    } else {
+      this.exampleNotIfication = false;
+    }
+  }
+  exampleStatus() {
+    if ( this.exampleNotIfication === true) {
+
+      return 'is-hidden';
+    } else {
+      return '';
+    }
   }
 
 }
