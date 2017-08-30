@@ -19,11 +19,11 @@ export class HomeComponent implements OnInit {
       .subscribe(
         (user) => {
           if (user && user !== undefined) {
-            this.user = user.user;
+            this.user = user;
           }
         },
         (error) => {
-          console.error(error)
+          console.error(error);
         }
       );
   }

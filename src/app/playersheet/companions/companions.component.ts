@@ -71,14 +71,14 @@ export class CompanionsComponent implements OnInit {
     this.playerService.updateCurrentPlayer(this.player);
   }
   update() {
-    this.formService.updatePlayerDbCall(this.player);
+    
   }
   maybeChanging(stat) {
     this.formService.currentlyChanging(stat);
   }
 
   registerChangeEnter(stat, companion, player) {
-    this.formService.companionUpdate(stat, companion, player);
+   
   }
   ifEditing(stat) {
     return this.formService.editCssToggle(stat);
