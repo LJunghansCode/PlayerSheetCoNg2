@@ -1,5 +1,6 @@
 import { Equipment } from './equipment';
 import { User } from './user';
+import { Skill } from './skill';
 import { Spell } from './spell';
 import { Companion } from './companion';
 import { Note } from './note';
@@ -34,7 +35,7 @@ export class Player {
      tempHitPoints: number;
      spellList: Spell[];
      experience: number;
-     skills: string[];
+     skills: Skill[];
      personalityTraits: string;
      ideals: string;
      bonds: string;
@@ -371,16 +372,5 @@ export class Player {
         // }
         gainLevel() {
            this.level += 1;
-        }
-        toggleSkill(skill) {
-            if (!this.skills) {
-                this.skills = [];
-            }
-            const skillMapObject = this.skills;
-            if (skillMapObject[skill]) {
-               delete skillMapObject[skill];
-            }else {
-               skillMapObject[skill] = ' ';
-            }
         }
     }

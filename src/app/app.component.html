@@ -8,9 +8,9 @@
     <div class="content has-text-centered">
       <p>
         <strong>Player Manager Co.</strong>
-        <strong>Check it out</strong>
       </p>
-          <a>Log Out</a>
+          <p *ngIf="!loggedIn">Welcome</p>
+          <p *ngIf="loggedIn">Welcome Back</p>
     </div>
   </div>
 </footer>

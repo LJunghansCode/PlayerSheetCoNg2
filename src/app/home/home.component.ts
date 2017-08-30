@@ -14,7 +14,6 @@ import { User } from './../../models/user';
 export class HomeComponent implements OnInit {
   user: User;
   constructor(public uiService: UiGlobalService, private loginService: LoginService) { }
-
   ngOnInit() {
     this.loginService._currentUser
       .subscribe(
@@ -22,6 +21,9 @@ export class HomeComponent implements OnInit {
           if (user && user !== undefined) {
             this.user = user.user;
           }
+        },
+        (error) => {
+          console.error(error)
         }
       );
   }

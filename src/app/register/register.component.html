@@ -4,7 +4,10 @@
   <div [@slideLeftAnimation] class="modal-card">
   <div class="modal-card-head has-text-centered">
     <div class="modal-card-title">
-      Thanks, register below... 
+      Register here
+    </div> |
+    <div class="modal-card-title">
+      <a class="subtitle" [routerLink]=" ['/home/login'] ">Already have an account? (Login here...)</a>
     </div>
     <div [routerLink]="['../']" class="modal-close"></div>
   </div>
@@ -67,7 +70,7 @@
       <p class="formError">{{formMessage}}</p>
     </div>
     <div class="card-footer-item">
-          <button class="registerButton button is-primary submit">
+          <button [disabled]="!registerForm.valid" class="registerButton button is-primary submit">
          Register!
     </button>
     </div>

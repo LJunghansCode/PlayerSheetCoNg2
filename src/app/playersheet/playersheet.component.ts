@@ -30,6 +30,7 @@ export class PlayersheetComponent implements OnInit{
       {'name': 'spells', 'title': 'Spell Details', 'active': false, 'icon': 'bolt'},
       {'name': 'details', 'title': 'Inventory and Details', 'active': false, 'icon': 'bars'},
       {'name': 'companions', 'title': 'Companions', 'active': false, 'icon': 'paw'},
+      {'name': 'skills', 'title': 'Skills and Stat breakdown', 'active': false, 'icon': 'cogs'},
       {'name': 'notes', 'title': 'Note Book', 'active': false, 'icon': 'sticky-note'},
       {'name': 'settings', 'title': 'Settings', 'active': false, 'icon': 'cogs'}
     ];
@@ -78,6 +79,9 @@ export class PlayersheetComponent implements OnInit{
   }
   getRoute(route) {
     return route.name;
+  }
+  changeRoute(title) {
+    this.currPartial = title;
   }
 
 }

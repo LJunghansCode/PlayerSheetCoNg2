@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators} from '@angular/forms';
 import { LoginService } from './../services/login/login.service';
 import { UiGlobalService } from './../services/ui/ui-global.service';
 import { Router } from '@angular/router';
@@ -17,9 +17,9 @@ export class RegisterComponent implements OnInit {
   formMessage: string;
   regStatus: boolean;
   public registerForm = this.fb.group({
-    email: ['', Validators.required],
+    email: ['', [Validators.email, Validators.required]],
     userName: ['', Validators.required],
-    password: ['', Validators.required],
+    password: ['', [Validators.required, Validators.minLength(6)] ],
     confirmPassword: ['', Validators.required]
   });
 
@@ -43,7 +43,6 @@ export class RegisterComponent implements OnInit {
                          .subscribe(
                            (user) => {
                            if (user) {
-                              this.formMessage = 'Thanks, you\'re registered!';
                               this.registerForm.reset();
                               this.uiService.triggerRegSuccess();
                               this.loginAfterRegister(FIELD.email, FIELD.password);

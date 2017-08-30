@@ -37,6 +37,7 @@ import { NewCompanionComponent } from './playersheet/companions/new-companion/ne
 import { NewNoteComponent } from './playersheet/note-book/new-note/new-note.component';
 import { NoteFilterPipe } from './pipes/search/filter.pipe';
 import { CompanionFilterPipe } from './pipes/companion/companion-filter.pipe';
+import { SkillsListComponent } from './playersheet/skills-list/skills-list.component';
 
 
 const routes: Routes = [
@@ -67,6 +68,7 @@ const routes: Routes = [
             {path: 'new', component: SpellFormComponent},
           ] },
         {path: 'details', component: PlayerDetailsComponent },
+        {path: 'skills', component: SkillsListComponent },
       ] },
   { path: 'create', component: CreateComponent},
   { path: 'about', component: AboutPageComponent},
@@ -100,6 +102,7 @@ const routes: Routes = [
     NewNoteComponent,
     NoteFilterPipe,
     CompanionFilterPipe,
+    SkillsListComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,44 @@
+<main class="columns">
+
+  <article class="playerSkills-container column">
+    <p class="title">Your Skills</p>
+    <ul>
+      <li *ngFor="let skill of player.skills; let i = index" class="single-skill"> 
+                <div class="media skill">
+                <div class="media-content">
+                  <div class="content">
+                    <p class="skillText"> {{skill.title}}</p><small (click)="toggle(skill)" class="skillText"> + {{skill.prof}} </small><input [ngClass]="checkEdit(skill)" [(ngModel)]="skill.prof" class="input is-small">
+                  </div>
+               </div>
+                    <div class="media-right">
+                      <span class="icon removeicon" (click)="removeSkillFromPlayer(i)">  <i class="fa fa-minus-square"></i></span>
+                    </div>
+              </div>
+    
+      </li>
+    </ul>
+  </article>
+
+  <article class="column is-9">
+    <ul class="columns">
+      <li *ngFor="let stat of skillsLib" class="single-skill column"> 
+        <p class="title"> {{stat.title}} {{player[stat.statName]}}</p>
+          <ul>
+            <li *ngFor="let skill of stat.skills column">
+             <div class="media skill">
+                <figure class="media-left">              
+                  <span class="icon addicon" (click)="addSkillToPlayer(skill)" >  <i class="fa fa-plus-square"></i></span>
+                </figure>
+                <div class=" media-content">
+                  <div class="content">
+                    <p class="skillText"> {{skill.title}}</p>
+                  </div>
+               </div>
+              </div>
+            </li>
+          </ul>
+          </li>
+    </ul>
+ </article>
+
+</main>

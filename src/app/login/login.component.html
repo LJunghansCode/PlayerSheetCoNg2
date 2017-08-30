@@ -1,18 +1,54 @@
-    <form id="loginForm" [formGroup]="loginForm" (ngSubmit)="loginUser($event);">
-        <input id="input-1" formControlName="email" type="email" placeholder="example@address.com" required autofocus />
-        <label for="input-1">
-            <span class="label-text">Email</span>
-            <span class="nav-dot"></span>
-            <div class="signup-button-trigger">Welcome Back! Click here to log in</div>
-        </label>
-        <input id="input-2" formControlName="password" type="password" placeholder="Password" required />
-        <label for="input-2">
-            <span class="label-text">Password</span>
-            <span class="nav-dot"></span>
-        </label>
-        <button type="submit">Log in</button>
-        <p *ngIf="!formMessage" class="tip">Press Tab</p>
-        <p *ngIf="formMessage" class="tip">{{formMessage}}</p>
-        <div class="signup-button">Welcome Back! Click here to log in</div>
-    </form>
-
+<div class="modal is-active">
+<div [@fadeInAnimation] [routerLink]="['../']" class="modal-background"></div>
+ <form id="loginForm" [formGroup]="loginForm" (ngSubmit)="loginUser();">
+  <div [@slideLeftAnimation] class="modal-card">
+  <div class="modal-card-head has-text-centered">
+    <div class="modal-card-title">
+      Login here
+    </div> | 
+    <div class="modal-card-title">
+     <a class="subtitle" [routerLink]="['/home/register']"> Need an account? (Register here...) </a>
+    </div>
+    <div [routerLink]="['../']" class="modal-close"></div>
+  </div>
+  <div class="modal-card-body">
+      <div class="top field is-horizontal">
+        <div class="field-label is-normal">
+          <label class="label">E-mail</label>
+        </div>
+        <div class="field-body">
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+              <input formControlName="email" class="input" type="email" required placeholder="E-mail">
+              <span class="icon is-small is-left">
+          <i class="fa fa-envelope"></i>
+        </span>
+            </p>
+          </div>
+          <div class="field-label is-normal">
+            <label class="label">Password</label>
+          </div>
+          <div class="field">
+            <p class="control is-expanded has-icons-left">
+              <input formControlName="password" class="input" type="password" required placeholder="Password">
+              <span class="icon is-small is-left">
+          <i class="fa fa-lock"></i>
+        </span>
+            </p>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div class="modal-card-foot">
+    <div class="card-footer-item">
+      <p class="formError">{{formMessage}}</p>
+    </div>
+    <div class="card-footer-item">
+          <button [disabled]="!loginForm.valid" class="registerButton button is-primary submit">
+         Login!
+    </button>
+    </div>
+  </div>
+</div>
+ </form>
+</div>
