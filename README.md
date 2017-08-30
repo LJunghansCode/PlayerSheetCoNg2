@@ -1,8 +1,8 @@
-# PlayerManager
+# playersheet.co
+:link: http://www.playersheet.co
 
-A refactor of localCharManage
-
-## Try it
+## Mess with it locally
 run `npm install`
-Run `npm start` for a concurrent express and angular. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `node server.js'
+Run 'npm start' for your local version on port 4200 :v:
 
