@@ -21,10 +21,11 @@ export class PlayerListComponent implements OnInit {
   }
 
   ngOnInit() {
-       this.loginService._currentUser
+    this.loginService.loggedInCheck();
+      this.loginService._currentUser
        .subscribe(
-         (currentUser) => {
-           if (currentUser !== undefined) {
+         (user) => {
+           if (user && user !== undefined) {
              this.currentUser = true;
              this.playerService.getPlayersForUser();
              this.subToPlayers();
@@ -36,7 +37,7 @@ export class PlayerListComponent implements OnInit {
 
   }
   subToPlayers() {
-                 this.playerService._playersArray.subscribe(
+      this.playerService._playersArray.subscribe(
           (players) => {
             if (players) {
               this.players = players;

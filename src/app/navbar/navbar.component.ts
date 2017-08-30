@@ -28,8 +28,8 @@ export class NavbarComponent implements OnInit {
     this.loginService._currentUser
       .subscribe(
         (user) => {
-          if (user) {
-            this.genLoggedInDetails(user.user);
+          if (user && user !== undefined) {
+            this.genLoggedInDetails(user);
             this.loggedIn = true;
           } else {
           }

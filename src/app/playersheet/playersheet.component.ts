@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { PlayerService } from './../services/player/player.service';
 import { LoginService } from './../services/login/login.service';
+import { UiGlobalService } from './../services/ui/ui-global.service';
 import { Player } from './../../models/player';
 import { User } from './../../models/user';
 import 'rxjs/add/operator/switchMap';
@@ -29,13 +30,17 @@ export class PlayersheetComponent implements OnInit{
       {'name': 'spells', 'title': 'Spell Details', 'active': false, 'icon': 'bolt'},
       {'name': 'details', 'title': 'Inventory and Details', 'active': false, 'icon': 'bars'},
       {'name': 'companions', 'title': 'Companions', 'active': false, 'icon': 'paw'},
+      {'name': 'skills', 'title': 'Skills and Stat breakdown', 'active': false, 'icon': 'cogs'},
       {'name': 'notes', 'title': 'Note Book', 'active': false, 'icon': 'sticky-note'},
       {'name': 'settings', 'title': 'Settings', 'active': false, 'icon': 'cogs'}
     ];
 
   constructor(  private playerService: PlayerService,
   private route: ActivatedRoute, private router: Router,
-  private location: Location, private loginService: LoginService) { }
+  private location: Location, private loginService: LoginService, private uiService: UiGlobalService) {
+  this.router.events.subscribe(() => {
+      window.scrollTo(0, 0);
+    }); }
   ngOnInit() {
   this.loginService._currentUser
     .subscribe(
@@ -48,7 +53,7 @@ export class PlayersheetComponent implements OnInit{
    this.route.params.subscribe(params => {
      this.id = params['id'];
      // Make sure this isn't example
-     if (this.id.toString() === '12345' ) {
+     if ( this.id.toString() === '12345' ) {
         this.exampleSheetToggle = true;
         this.playerService.createExamplePlayer();
      }else {
@@ -56,38 +61,27 @@ export class PlayersheetComponent implements OnInit{
      }
      this.playerService._playerSingle
       .subscribe((player) => {
-        if (!this.player && player) {
+        if (player) {
             this.player = player;
             this.player.masterStats = this.player.organizeStatsArray();
         }
       }, (error) => {
         console.error(error);
       }, () => {
-        // done
       });
    });
+  }
+  toggleNot() {
+    this.uiService.toggleExampleNotification();
+  }
+  getNotification() {
+    return this.uiService.exampleStatus();
   }
   getRoute(route) {
     return route.name;
   }
-  ifActive(route) {
-    const currLink = document.getElementsByClassName('is-active');
-    const currentPath = this.location.path();
-    let endString = '';
-    for (let i = currentPath.length - 1; i < currentPath.length; i--) {
-      if (currentPath[i] === '/') {
-        break;
-      }
-      endString += currentPath[i];
-    }
-    const final = endString.split('').reverse().join('');
-    if (final === route.name) {
-      this.currPartial = route;
-      return 'is-active';
-    } else {
-      return '';
-    }
+  changeRoute(title) {
+    this.currPartial = title;
   }
-
 
 }

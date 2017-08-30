@@ -11,7 +11,6 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class LoginService {
-  public currUser: User = undefined;
   headers = new Headers({ 'Content-Type': 'application/json' });
   options = new RequestOptions({ headers: this.headers });
   public newUserUrl = 'api/new_user';
@@ -24,12 +23,13 @@ export class LoginService {
 
   public updateUser(user) {
     this.currentUserSource.next(user);
+  
   }
 
   constructor(private http: Http) { }
   logOutCurrent() {
     this.http.get(this.logOutUrl, this.options).subscribe();
-    this.currentUserSource.complete();
+    this.currentUserSource.next(undefined);
   }
   newUser(userForm: FormData): Observable<User> {
     return this.http.post(this.newUserUrl, { userForm }, this.options)
@@ -38,7 +38,7 @@ export class LoginService {
   }
   loginUser(loginForm: FormData): Observable<User> {
     return this.http.post(this.loginUrl, { loginForm }, this.options)
-      .map(this.processData)
+      .map(this.processLogin)
       .catch((error: any) => Observable.throw(error.json() || 'Server error'));
   }
   loginByCredentials(email: string, password: string): Observable<User> {
@@ -59,6 +59,11 @@ export class LoginService {
   }
   private processData(res: Response) {
     const body = res.json();
-    return body || {};
+    return body;
   }
+  private processLogin(res: Response) {
+    const body = res.json();
+    return body.user;
+  }
+
 }

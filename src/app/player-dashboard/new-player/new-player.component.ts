@@ -24,6 +24,12 @@ export class NewPlayerComponent implements OnInit {
   ngOnInit() {
   }
     doCreate() {
+      const field = this.newPlayerForm.value;
+      if (!field.realName || !field.name || !field.race
+      || !field.classType) {
+        this.formMessage = 'Oops, you missed a field';
+        return;
+      }
       this.playerService.newPlayer(this.newPlayerForm.value);
       this.newPlayerForm.reset();
       this.route.navigateByUrl('/player-dashboard');

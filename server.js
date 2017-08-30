@@ -18,11 +18,16 @@ app.use(session({
 	saveUninitialized : true,
 }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'app')));
 app.use('/api', api);
+// UNCOMMENT FOR PRODUCTION!!!!!!
+// app.use(express.static(path.join(__dirname, 'dist')));
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'dist/index.html'));
+// });
 const port = process.env.PORT || PORT_NUM;
 app.set('port', port);
 
 const server = http.createServer(app);
 
-server.listen(port, () => console.log(`API running on localhost:${port}`));
+server.listen(port, () => console.log(` API running on localhost: ${ port } `));
+

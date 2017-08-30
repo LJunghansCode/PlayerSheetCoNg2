@@ -1,5 +1,4 @@
 .mainTitle
- padding: 1%
  color: #0E0B16
  font-size: 25pt
 .homeContainer
@@ -13,49 +12,55 @@
  padding: 1%
  color: #0E0B16
  font-size: 25pt
-.createButtonContainer
- background: linear-gradient(to left top, #A239CA, #0E0B16)
-.jumpButtonContainer
- background: linear-gradient(to left top, #4717F6, #0E0B16)
 .createButton, .jumpButton
- font-size: 4rem
+ font-size: 3vw
  border-radius: 100px
  text-align: center
  border: none
- background-color: #A239CA
+ background-color: #57BC90
  transition: all 0.5s
  cursor: pointer
  opacity: 1
  color: white
 .jumpButton
- background-color: #4717F6
-
+ background-color: #77C9D4
 .createButton, .jumpButton
  &:hover
   opacity: 1
+  transform: translateX(-2px)
+  transform: translateY(-1px)
+  box-shadow: 2px 2px 2px #888888
   .btnText
    margin-right: 15px
   .btnIcon
-   animation-duration: 0.6s
-   animation-name: spin
+   animation-duration: 1.5s
+   animation-name: moveIcon
 .btnIcon
- animation-name: backspin
- animation-duration: 0.6s
- transition: all 0.6s
- font-size: 40pt
- margin-top: 9px
- margin-left: 15px 
+ font-size: 2vw 
+ transition: all .5s
 .btnText
- transition: all 0.6s
+ transition: all 2s
 
- @keyframes backspin
+ @keyframes moveIcon
   100%
-    transform: rotate(0deg)
+    transform: translateX(-1px)
+  90%
+    transform: translateX(1px)
+  80%
+    transform: translateX(-2px)
+  70%
+    transform: translateX(2px)
+  60%
+    transform: translateX(-4px)
+  50%
+    transform: translateX(4px)
+  40%
+    transform: translateX(-8px)
+  30%
+    transform: translateX(8px)
+  20%
+    transform: translateX(-10px)
+  10%
+    transform: translateX(10px)
   0%
-    transform: rotate(360deg)
- @keyframes spin
-  0%
-    transform: rotate(0deg)
-  100%
-    transform: rotate(360deg)
-
+    
