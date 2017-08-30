@@ -99,7 +99,7 @@ export class SkillsListComponent implements OnInit {
         (player) => {
           if (player && player !== undefined) {
             this.player = player;
-            if (this.player.id === 12345) {
+            if ( this.player.id === 12345 || this.player.skills === undefined ) {
               this.player.skills = [];
             }
           }
