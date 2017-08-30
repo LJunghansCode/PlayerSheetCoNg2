@@ -8,6 +8,8 @@ You will Need:
   
   -Node and Npm.
   
+  -Angular Cli (npm install -g @angular/cli)
+  
   from '/'
   
 run `npm install`
