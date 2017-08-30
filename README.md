@@ -1,8 +1,21 @@
-# PlayerManager
+# playersheet.co
+:link: http://www.playersheet.co
 
-A refactor of localCharManage
+## Mess with it locally
+You will Need:
 
-## Try it
+  -Local MongoDb server running.
+  
+  -Node and Npm.
+  
+  -Angular Cli (npm install -g @angular/cli)
+  
+  from '/'
+  
 run `npm install`
-Run `npm start` for a concurrent express and angular. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+Run `node server.js'
+
+Run 'npm start' for your local version on port 4200 :v:
+
 
