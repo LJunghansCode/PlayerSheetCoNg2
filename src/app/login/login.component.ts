@@ -48,6 +48,6 @@ export class LoginComponent implements OnInit {
     // }
   }
   toggleField(field) {
-    console.log(field);
+    
   }
 }

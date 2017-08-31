@@ -3,9 +3,10 @@ export class Skill {
     statName: string;
     profStatus: boolean;
     prof: number;
-    constructor(title, statName, statusBool) {
+    constructor(title, statName, statusBool, prof) {
         this.title = title;
         this.statName = statName;
         this.profStatus = statusBool;
+        this.prof = prof;
     }
     }

@@ -4,22 +4,26 @@
       <img class="svg" src="./../../assets/swordsVG.svg"  width="112" height="28">
       <img class="svg" src="./../../assets/PlayerSheetCo1.svg"  width="112" height="28">
     </a>
+    <div class="navbar-burger burger" [ngClass]="activeNav()" data-target="nav-menu" (click)="toggleNavMobile()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div> 
-  <div class="navbar-divider"></div>
-  <div class="nav-left">
-     <div class="navbar-item welcome" [routerLink]="['player-dashboard']" *ngIf="ifPlayer()"><span class="icon is-medium"><i class="fa fa-hand-spock-o"></i></span><p>Welcome Back, {{userDetails.userName}}</p></div>
-  </div>  
-    <div class="nav-right">
-      <!-- NO PLAYER-->
-      <a class="navbar-item" *ngIf="!ifPlayer()" [routerLink]=" ['/home/login'] "><span class="icon is-medium"><i class="fa fa-sign-in"></i></span>Log In </a>
-      <!-- PLAYER LOGGED IN-->
-       <a class="navbar-item" *ngIf="ifPlayer()" [routerLink]="['player-dashboard']"><span class="icon is-medium"><i class="fa fa-users"></i></span>Dashboard</a>
-       <a class="navbar-item" *ngIf="ifPlayer()" (click)="logOutCurrent()"><span class="icon is-medium"><i class="fa fa-sign-out"></i></span>Log Out</a>
-       <!-- ALWAYS -->
-      <a class="navbar-item" [routerLink]="['about']"><span class="icon is-medium"><i class="fa fa-question"></i></span>About Us</a>
-      <a class="navbar-item" href="https://github.com/LJunghansCode/PlayerSheetCoNg2" target="_blank">
-      <span class="icon is-medium"><i class="fa fa-github-square"></i></span> Github
-      </a>
+    <div class="navbar-menu" [ngClass]="activeNav()" id="nav-menu">
+        
+          <div class="navbar-item is-hoverable" [routerLink]="['player-dashboard']" *ngIf="ifPlayer()"><span class="icon is-medium"><i class="fa fa-hand-spock-o"></i></span><p>Welcome Back, {{userDetails.userName}}</p></div>
+          <!-- NO PLAYER-->
+          <a class="navbar-item" *ngIf="!ifPlayer()" [routerLink]=" ['/home/login'] "><span class="icon is-medium"><i class="fa fa-sign-in"></i></span>Log In </a>
+          <!-- PLAYER LOGGED IN-->
+          <a class="navbar-item" *ngIf="ifPlayer()" [routerLink]="['player-dashboard']"><span class="icon is-medium"><i class="fa fa-users"></i></span>Dashboard</a>
+          <a class="navbar-item" *ngIf="ifPlayer()" (click)="logOutCurrent()"><span class="icon is-medium"><i class="fa fa-sign-out"></i></span>Log Out</a>
+          <!-- ALWAYS -->
+          <a class="navbar-item" [routerLink]="['about']"><span class="icon is-medium"><i class="fa fa-question"></i></span>About Us</a>
+          <a class="navbar-item" href="https://github.com/LJunghansCode/PlayerSheetCoNg2" target="_blank">
+          <span class="icon is-medium"><i class="fa fa-github-square"></i></span> Github
+          </a>
+ 
     </div>
 </nav>
 

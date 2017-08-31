@@ -13,6 +13,7 @@ import { fadeInAnimation } from './../_animations/fadeAnim';
 export class NavbarComponent implements OnInit {
   loginModal: boolean;
   userLoggedIn: boolean;
+  mobileToggle: boolean;
   userDetails: {};
   loggedIn = false;
 
@@ -63,6 +64,20 @@ export class NavbarComponent implements OnInit {
       return true;
     } else {
       return false;
+    }
+  }
+  toggleNavMobile() {
+    if (this.mobileToggle === undefined || ! this.mobileToggle) {
+      this.mobileToggle = true;
+    } else {
+      this.mobileToggle = false;
+    }
+  }
+  activeNav() {
+    if (this.mobileToggle === undefined || ! this.mobileToggle) {
+      return '';
+    } else {
+      return 'is-active';
     }
   }
 }

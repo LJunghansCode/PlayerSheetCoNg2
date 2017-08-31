@@ -99,6 +99,14 @@ export class SkillsListComponent implements OnInit {
         (player) => {
           if (player && player !== undefined) {
             this.player = player;
+            const skills = this.player.skills;
+            const skillsToBe = [];
+            let i;
+            for ( i = 0; i < skills.length; i++ ) {
+                const s = skills[i];
+                skillsToBe.push(new Skill(s.title, s.statName, s.profStatus, s.prof));
+            }
+            this.player.skills = skillsToBe;
             if ( this.player.id === 12345 || this.player.skills === undefined ) {
               this.player.skills = [];
             }
@@ -107,7 +115,7 @@ export class SkillsListComponent implements OnInit {
       );
   }
   addSkillToPlayer(skill) {
-    const skillToAdd = new Skill(skill.title, skill.statName, true);
+    const skillToAdd = new Skill(skill.title, skill.statName, true, 0);
     this.player.skills.push(skillToAdd);
     this.playerService.updateCurrentPlayer(this.player);
   }

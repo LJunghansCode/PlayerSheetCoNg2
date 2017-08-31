@@ -1,15 +1,21 @@
-<div class="modal is-active">
+<div class="modal is-active is-mobile">
 <div [@fadeInAnimation] [routerLink]="['../']" class="modal-background"></div>
- <form id="registerForm" [formGroup]="registerForm" (ngSubmit)="registerNew();">
+ <form id="registerForm" class="registerForm" [formGroup]="registerForm" (ngSubmit)="registerNew();">
   <div [@slideLeftAnimation] class="modal-card">
   <div class="modal-card-head has-text-centered">
-    <div class="modal-card-title">
-      Register here
-    </div> |
-    <div class="modal-card-title">
-      <a class="subtitle" [routerLink]=" ['/home/login'] ">Already have an account? (Login here...)</a>
+    <div class="level">
+      <div class="level-left">
+      <div class="modal-card-title">
+        Register here
+      </div>
+      </div>
+    <div class="level-right">
+      <div class="modal-card-title ">
+        <a class="subtitle" [routerLink]=" ['/home/login'] ">Already have an account? (Login here...)</a>
+      </div>
     </div>
     <div [routerLink]="['../']" class="modal-close"></div>
+  </div>
   </div>
   <div class="modal-card-body">
       <div class="top field is-horizontal">

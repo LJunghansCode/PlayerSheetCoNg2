@@ -30,13 +30,13 @@ export class PlayerService {
 
   constructor(private http: Http) { }
   public updateCurrentPlayer(player) {
+    
     this.updatePlayerById(player);
   }
   updatePlayerById(player) {
   if (player.id === 12345) {
     return;
   }
-    console.log('called myapi')
     this.http.post(this.updateUrl, {player}, this.options).subscribe(
       (res) => {
         const updated = this.instantiatePlayerFromDatabase(res);
@@ -57,7 +57,7 @@ export class PlayerService {
           this.allPlayers.push(player);
         },
         (err) => {
-          console.log(err)
+          console.log(err);
         },
         () => {}
       );

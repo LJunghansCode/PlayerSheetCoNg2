@@ -1,13 +1,13 @@
 <main class="columns">
 
   <article class="playerSkills-container column">
-    <p class="title">Your Skills</p>
+    <p class="title">Your Skills</p><small>click to change modifiers</small>
     <ul>
       <li *ngFor="let skill of player.skills; let i = index" class="single-skill"> 
                 <div class="media skill">
                 <div class="media-content">
                   <div class="content">
-                    <p class="skillText"> {{skill.title}}</p><small (click)="toggle(skill)" class="skillText"> + {{skill.prof}} </small><input [ngClass]="checkEdit(skill)" [(ngModel)]="skill.prof" class="input is-small">
+                    <p class="skillText"> {{skill.title}}</p><small (click)="toggle(skill)" class="skillText"> + {{skill.prof}} </small><input (blur)="toggle(skill)" [ngClass]="checkEdit(skill)" [(ngModel)]="skill.prof" class="input is-small">
                   </div>
                </div>
                     <div class="media-right">

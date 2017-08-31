@@ -1,14 +1,20 @@
-<div class="modal is-active">
+<div class="modal is-active ">
 <div [@fadeInAnimation] [routerLink]="['../']" class="modal-background"></div>
- <form id="loginForm" [formGroup]="loginForm" (ngSubmit)="loginUser();">
+ <form id="loginForm" class="loginForm" [formGroup]="loginForm" (ngSubmit)="loginUser();">
   <div [@slideLeftAnimation] class="modal-card">
   <div class="modal-card-head has-text-centered">
-    <div class="modal-card-title">
-      Login here
-    </div> | 
-    <div class="modal-card-title">
-     <a class="subtitle" [routerLink]="['/home/register']"> Need an account? (Register here...) </a>
+<div class="level">
+      <div class="level-left">
+      <div class="modal-card-title">
+        Login here
+      </div>
+      </div>
+    <div class="level-right">
+      <div class="modal-card-title ">
+        <a class="subtitle" [routerLink]=" ['/home/register'] ">Need an account? (Register here...)</a>
+      </div>
     </div>
+  </div>
     <div [routerLink]="['../']" class="modal-close"></div>
   </div>
   <div class="modal-card-body">

@@ -23,7 +23,7 @@ export class PlayerCardComponent implements OnInit {
   ngOnInit() {
   }
   delete(id) {
-    console.log(this.index);
+    
     this.playerService.deletePlayerById(id, this.index);
   }
 }
