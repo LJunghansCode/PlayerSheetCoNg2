@@ -10,9 +10,10 @@
       <span></span>
     </div>
   </div> 
-    <div class="navbar-menu" [ngClass]="activeNav()" id="nav-menu">
+  <div class="navbar-divider"></div>
+    <div class="nav-right navbar-menu" [ngClass]="activeNav()" id="nav-menu">
         
-          <div class="navbar-item is-hoverable" [routerLink]="['player-dashboard']" *ngIf="ifPlayer()"><span class="icon is-medium"><i class="fa fa-hand-spock-o"></i></span><p>Welcome Back, {{userDetails.userName}}</p></div>
+          <a class="navbar-item" [routerLink]="['player-dashboard']" *ngIf="ifPlayer()"><span class="icon is-medium"><i class="fa fa-hand-spock-o"></i></span><p>Welcome Back, {{userDetails.userName}}</p></a>
           <!-- NO PLAYER-->
           <a class="navbar-item" *ngIf="!ifPlayer()" [routerLink]=" ['/home/login'] "><span class="icon is-medium"><i class="fa fa-sign-in"></i></span>Log In </a>
           <!-- PLAYER LOGGED IN-->

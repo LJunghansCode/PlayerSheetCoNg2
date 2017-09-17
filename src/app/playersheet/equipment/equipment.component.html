@@ -1,0 +1,47 @@
+<div class="control has-icons-right mainSearch">
+  <input [(ngModel)]="filter" class="input" type="text" placeholder="Search Equipment">
+  <span class="icon is-small is-right"><i class="fa fa-search"></i></span>
+</div>
+<article class="columns section">
+<div class="spellsContainer column" [dragulaModel]='equipment' [dragula]="'spell-bag'">
+  <article @slideLeftAnimation class="" *ngFor="let item of equipment | search: filter; let i = index" >
+   <div class="spellSingle card">
+     <div class="card-header">
+       <div class="card-header-title">
+         <p>{{item.name}}</p>
+       </div>
+       <div class="card-header-icon">
+      <span (click)="delete(i)"class="icon">
+        <i class="fa fa-trash"></i>
+      </span>
+       </div>
+     </div>
+     <div class="card-content">
+      <p> <label class="menu-label" for="">Description</label> </p>
+      <p>{{item.description}}</p>
+            <p> <label class="menu-label" for="">Weight</label> </p>
+      <p>{{item.weight}}</p>
+            <p> <label class="menu-label" for="">Damage</label> </p>
+      <p>{{item.damage}}</p>
+            <p> <label class="menu-label" for="">Armor Class</label> </p>
+      <p>{{item.armorClass}}</p>
+            <p> <label class="menu-label" for="">Stealth</label> </p>
+      <p>{{item.stealth}}</p>
+            <p> <label class="menu-label" for="">Range</label> </p>
+      <p>{{item.range}}</p>
+            <p> <label class="menu-label" for="">Damage Type</label> </p>
+      <p>{{item.type}}</p>
+             <p> <label class="menu-label" for="">Item Type</label> </p>
+      <p>{{item.itemType}}</p>
+
+    </div>
+      <footer class="card-footer">
+  </footer>
+   </div>
+  </article>
+</div>
+  <div>
+      <router-outlet></router-outlet>
+  </div>
+</article>
+

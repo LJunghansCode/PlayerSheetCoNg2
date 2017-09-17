@@ -4,7 +4,7 @@
       <p *ngIf="player.name && player.classType"class="menu-label">{{player.name}} the {{player.classType}}</p>
       <p *ngIf="!player.name || !player.classType"class="menu-label">Your new player!</p>
       <ul class="menu-list">
-        <li class="nav-item" *ngFor="let route of routeMap"> <a (click)="changeRoute(route.title)" [routerLink]="[getRoute(route)]" routerLinkActive="is-active" ><span class="menu-icon icon is-small is-left"><i class="fa fa-{{route.icon}}"></i></span> {{route.title}}</a></li>
+        <li class="nav-item" *ngFor="let route of routeMapArray"> <a (click)="changeRoute(route.title)" [routerLink]="[getRoute(route)]" routerLinkActive="is-active" ><span class="menu-icon icon is-small is-left"><i class="fa fa-{{route.icon}}"></i></span> {{route.title}}</a></li>
       </ul>
     </aside>
   </section>
@@ -30,6 +30,7 @@
             <div class="container">
               <ul>
                 <li><a [routerLink]="[ 'spells/new' ]" >New Spell</a></li>
+                <li><a [routerLink]="[ 'equipment/new' ]" routerLinkActive="is-active">New Equipment Piece</a></li>
                 <li><a [routerLink]="[ 'companions/new' ]" routerLinkActive="is-active">New Companion</a></li>
                 <li><a [routerLink]="[ 'notes/new' ]" routerLinkActive="is-active">New Note</a></li>
               </ul>
@@ -37,7 +38,7 @@
           </nav>
         </div>
     </div>
-    <div class="section">
+    <div class="section partialView">
      <router-outlet></router-outlet>
     </div> 
   </div>

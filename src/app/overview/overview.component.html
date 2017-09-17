@@ -1,0 +1,165 @@
+
+<div [@fadeInAnimation] class="tile is-ancestor ">
+  <div class="tile is-info ">
+    <div class="tile is-vertical">
+      <div class="tile is-parent">
+        <div class="tile box is-child">
+          <p> <label class="menu-label" for="">Class </label> </p>
+           <input type="text" name="" value="{{player.classType}}" [(ngModel)]="player.classType" class="input statInput" />  
+        </div>
+        <div class="tile box is-child">
+          <p> <label class="menu-label" for="">Level</label> </p>
+           <input type="number" name="" value="{{player.level}}" [(ngModel)]="player.level" class="input statInput" />    
+        </div>
+        <div class="tile box is-child">
+          <p> <label class="menu-label" for="">Background</label> </p>
+          <input type="text" name="" value="{{player.background}}" [(ngModel)]="player.background" class="input statInput" />  
+        </div>
+        <div class="tile box is-child">
+          <p> <label class="menu-label" for="">Player Name</label> </p>
+          <input type="text" name="" value="{{player.realName}}" [(ngModel)]="player.realName" class="input statInput" />  
+        </div>
+      </div>
+      <div class="tile is-parent">
+        <div class="tile box is-child">
+          <p> <label class="menu-label" for="">Race</label> </p>
+          <input type="text" name="" value="{{player.race}}" [(ngModel)]="player.race" class="input statInput" />  
+        </div>
+        <div class="tile box is-child">
+          <p> <label class="menu-label" for="">Alignment</label> </p>
+          <input type="text" name="" value="{{player.alignment}}" [(ngModel)]="player.alignment" class="input statInput" />  
+        </div>
+        <div class="tile box is-child">
+          <p> <label class="menu-label" for="">Experience</label> </p>
+           <input type="number" name="" value="{{player.experience}}" [(ngModel)]="player.experience" class="input statInput" />    
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tile is-ancestor">
+  <div class="tile">
+    <div class="tile is-vertical is-parent">
+      <div *ngFor="let stat of player.masterStats.primaryStats" class="tile box is-child">
+        <p> <label class="menu-label" for="">{{stat.title}}</label> </p>
+           <input type="number" name="" value="{{stat.value}}" [(ngModel)]="player[stat.stat]" class="input is-large statInput" />    
+        <p>{{player.singleModCalc(stat.stat)}}</p>
+      </div>
+    </div>
+    <div class="tile is-vertical is-parent">
+      <div class="tile box is-child">
+        <p> <label class="menu-label" for="">Inspiration</label> </p>
+        <input type="text" name="" value="{{player.inspiration}}" [(ngModel)]="player.inspiration" class="input statInput" />  
+      </div>
+      <div class="tile box is-child">
+        <p> <label class="menu-label" for="">Proficiency Bonus</label> </p>
+        <input type="text" name="" value="{{player.proficiencyBonus}}" [(ngModel)]="player.proficiencyBonus" class="input statInput" />  
+      </div>
+      <div class="tile is-vertical box level">
+        <label for="" class="menu-label">Saving Throws</label>
+        <div class="tile" *ngFor="let value of savingThrows | values">
+          <p class="level-item"> {{value.title}} </p>
+          <input type="text" name="" value="{{value.value}}" [(ngModel)]="value.value" class="input stInput level-right" />
+        </div>
+      </div>
+      <div class="tile is-vertical box">
+        <a [routerLink]="['../skills']">Skills</a>
+        <div *ngFor="let skill of this.player.skills"class="tile box">{{skill.title}} +{{skill.prof}}</div>
+       
+
+      </div>
+    </div>
+  </div>
+  <div class="tile is-vertical box">
+    <div class="tile is-parent">
+      <div class="tile box is-child">
+        <label for="" class="menu-label">Armor Class</label>
+          <input type="number" name="" value="{{player.armorClass}}" placeholder="AC" [(ngModel)]="player.armorClass" class="input stInput level-right"/>
+      </div>
+      <div class="tile box is-child">
+         <label for="" class="menu-label">Initiative</label>
+          <input type="number" name="" value="{{player.initiative}}" placeholder="Init" [(ngModel)]="player.initiative" class="input stInput level-right" />
+      </div>
+      <div class="tile box is-child">
+        <label for="" class="menu-label">Speed</label>
+          <input type="number" name="" value="{{player.speed}}" placeholder="Init" [(ngModel)]="player.speed" class="input stInput level-right" />
+      </div>
+    </div>
+
+    <div class="tile box level">
+        <label for="" class="label level-left">Current Hp</label>
+          <input type="number" name="" value="{{player.currentHitPoints}}" placeholder="Health Points" [(ngModel)]="player.currentHitPoints" class="input stInput level-right" />
+    </div>
+    <div class="tile box level">
+        <label for="" class="label level-left">Temporary Hp</label>
+          <input type="number" name="" value="{{player.tempHitPoints}}" placeholder="Temp HP" [(ngModel)]="player.tempHitPoints" class="input stInput level-right" />
+    </div>
+    <div class="tile">
+      <div class="tile box">Hit Dice</div>
+      <div class="tile box">Death Saves</div>
+    </div>
+    <div class="tile box is-vertical">
+     <span class="icon"><i class="fa fa-bolt"></i></span> <a class="title is-size-4" [routerLink]="['../spells']">Spell Casting and Attacks</a>
+     <div *ngIf="player.spellList.length > 0" class="tile box is-child">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let S of player.spellList">
+              <td> <p>{{S.title}}</p> </td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="tile box is-vertical">
+      <span class="icon"><i class="fa fa-shield"></i></span> <a class="title is-size-4" [routerLink]="['../equipment']">Equipment</a>
+      <div *ngIf="player.equipment.length > 0" class="tile box is-child">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Damage</th>
+              <th>Type</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let E of player.equipment">
+              <td> <p>{{E.name}}</p> </td>
+              <td> <p>{{E.damage}}</p> </td>
+              <td> <p>{{E.type}}</p> </td>
+            </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="tile is-vertical box content is-parent">
+
+    <div class="tile box is-child">
+      <p><label class="menu-label" for="">Personality Traits</label></p>
+      <textarea autosize type="text" name="" value="{{player.personalityTraits}}" [(ngModel)]="player.personalityTraits" class="input statInput" ></textarea>  
+    </div>
+    <div class="tile box is-child">
+      <p><label class="menu-label" for="">Ideals</label></p>
+       <textarea autosize type="text" name="" value="{{player.ideals}}" [(ngModel)]="player.ideals" class="input statInput" ></textarea>  
+    </div>
+    <div class="tile box is-child">
+      <p><label class="menu-label" for="">Bonds</label></p>
+       <textarea autosize type="text" name="" value="{{player.bonds}}" [(ngModel)]="player.bonds" class="input statInput" ></textarea>  
+    </div>
+    <div class="tile box is-child">
+      <p><label class="menu-label" for="">Flaws</label></p>
+       <textarea autosize type="text" name="" value="{{player.flaws}}" [(ngModel)]="player.flaws" class="input statInput" ></textarea>  
+    </div>
+    <div class="tile box is-child">
+      <p><label class="menu-label" for="">Features and Traits</label></p>
+       <textarea autosize type="text" name="" value="{{player.featuresTraits}}" [(ngModel)]="player.featuresTraits" class="input statInput" ></textarea>  
+    </div>
+
+  </div>
+</div>
+<button class="button is-large is-info saveButton" (click)="update()">Save all changes</button>

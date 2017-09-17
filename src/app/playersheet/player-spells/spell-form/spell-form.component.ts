@@ -6,7 +6,7 @@ import { PlayerService } from './../../../services/player/player.service';
 import { FormService } from './../../../services/form/form.service';
 import { Player } from './../../../../models/player';
 import { Spell } from './../../../../models/spell';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-spell-form',

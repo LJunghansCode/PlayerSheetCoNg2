@@ -12,6 +12,28 @@
  display: inline
 .skill
  margin: 5%
-.input
+.input.is-small
  width: 50px
  float: right
+.title
+ font-size: 2vh
+ text-align: center
+.pStat
+ margin: 1%
+ margin-top: 1em
+.pStat
+ .input
+  text-align: center
+  border: none
+  box-shadow: none
+.pStat
+ .input
+  &:focus
+    text-align: center
+    border: 1px solid black
+    box-shadow: 1px 1px rgba(166, 166, 166, 0.29) inset
+.statList
+ display: flex
+ flex-direction: row
+.stat
+ flex: 1

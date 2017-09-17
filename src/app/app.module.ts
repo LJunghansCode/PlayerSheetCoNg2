@@ -11,7 +11,7 @@ import { DragulaModule } from 'ng2-dragula';
 import { LoginService } from './services/login/login.service';
 import { PlayerService } from './services/player/player.service';
 import { UiGlobalService } from './services/ui/ui-global.service';
-import {FormService } from './services/form/form.service';
+import { FormService } from './services/form/form.service';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PlayersheetComponent } from './playersheet/playersheet.component';
@@ -38,6 +38,10 @@ import { NewNoteComponent } from './playersheet/note-book/new-note/new-note.comp
 import { NoteFilterPipe } from './pipes/search/filter.pipe';
 import { CompanionFilterPipe } from './pipes/companion/companion-filter.pipe';
 import { SkillsListComponent } from './playersheet/skills-list/skills-list.component';
+import { OverviewComponent } from './overview/overview.component';
+import { ValuesPipe } from './../app/pipes/values/values.pipe';
+import { EquipmentComponent } from './playersheet/equipment/equipment.component';
+import { EquipmentFormComponent } from './playersheet/equipment/equipment-form/equipment-form.component';
 
 
 const routes: Routes = [
@@ -52,7 +56,7 @@ const routes: Routes = [
         ] },
   { path: 'player/:id', component: PlayersheetComponent,
       children: [
-        {path: '', redirectTo: 'info', pathMatch: 'full'},
+        {path: '', redirectTo: 'overview', pathMatch: 'full'},
         {path: 'info', component: PlayerInfoComponent },
         {path: 'companions', component: CompanionsComponent,
           children: [
@@ -63,9 +67,14 @@ const routes: Routes = [
             {path: 'new', component: NewNoteComponent},
           ] },
         {path: 'settings', component: PlayerSettingsComponent },
+        {path: 'overview', component: OverviewComponent },
         {path: 'spells', component: PlayerSpellsComponent,
           children: [
             {path: 'new', component: SpellFormComponent},
+          ] },
+        {path: 'equipment', component: EquipmentComponent,
+          children: [
+            {path: 'new', component: EquipmentFormComponent},
           ] },
         {path: 'details', component: PlayerDetailsComponent },
         {path: 'skills', component: SkillsListComponent },
@@ -103,6 +112,10 @@ const routes: Routes = [
     NoteFilterPipe,
     CompanionFilterPipe,
     SkillsListComponent,
+    OverviewComponent,
+    ValuesPipe,
+    EquipmentComponent,
+    EquipmentFormComponent,
   ],
   imports: [
     BrowserModule,

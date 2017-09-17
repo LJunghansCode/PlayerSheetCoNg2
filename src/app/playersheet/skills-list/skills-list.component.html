@@ -1,6 +1,17 @@
-<main class="columns">
-
-  <article class="playerSkills-container column">
+ <article class="box"> 
+   <p class="title is-1">Primary Stats</p>
+   <ul class="statList">
+     <li class="stat" *ngFor="let stat of primaryStats">
+       <div class="pStat box">
+        <p class="title is-size-3">{{stat.title}}</p>
+        <input autosize [ngClass]="ifEditing(stat)" (keyup)="maybeChanging(stat)" (blur)="registerChangeEnter(stat, player)" [(ngModel)]="player[stat.stat]" class="input is-large" type="text" placeholder="0" />
+        <p class="subtitle">{{player.singleModCalc(stat.stat)}}</p>
+       </div>
+     </li>
+   </ul>
+ </article>
+ <main class="columns">
+  <article class="playerSkills-container column is-6">
     <p class="title">Your Skills</p><small>click to change modifiers</small>
     <ul>
       <li *ngFor="let skill of player.skills; let i = index" class="single-skill"> 
@@ -19,10 +30,11 @@
     </ul>
   </article>
 
-  <article class="column is-9">
+  <article class="column is-6">
+    <p class="title is-1">All Skills</p>
     <ul class="columns">
       <li *ngFor="let stat of skillsLib" class="single-skill column"> 
-        <p class="title"> {{stat.title}} {{player[stat.statName]}}</p>
+        <p class="subtitle"> {{stat.title}} {{player[stat.statName]}}</p>
           <ul>
             <li *ngFor="let skill of stat.skills column">
              <div class="media skill">

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Skill } from '../../../models/skill';
 import { Player } from '../../../models/player';
+import { Stat } from '../../../models/stat';
 import { PlayerService } from './../../services/player/player.service';
+import { FormService } from './../../services/form/form.service';
 
 @Component({
   selector: 'app-skills-list',
@@ -91,7 +93,8 @@ export class SkillsListComponent implements OnInit {
         ];
   private listToShow: Skill[];
   player: Player;
-  constructor(private playerService: PlayerService) { }
+  primaryStats: Stat[];
+  constructor(private playerService: PlayerService, private formService: FormService) { }
 
   ngOnInit() {
     this.playerService._playerSingle
@@ -101,6 +104,7 @@ export class SkillsListComponent implements OnInit {
             this.player = player;
             const skills = this.player.skills;
             const skillsToBe = [];
+            this.primaryStats = this.player.masterStats.primaryStats;
             let i;
             for ( i = 0; i < skills.length; i++ ) {
                 const s = skills[i];
@@ -141,5 +145,18 @@ toggle(skill) {
     skill.editing = false;
   }
 }
+  update() {
+    this.formService.updatePlayerDbCall(this.player);
+  }
+  maybeChanging(stat) {
+    this.formService.currentlyChanging(stat);
+  }
+
+  registerChangeEnter(stat, player) {
+    this.formService.fieldChangedCallDbAfterWait(stat, player);
+  }
+  ifEditing(stat) {
+    return this.formService.editCssToggle(stat);
+  }
 }
 
